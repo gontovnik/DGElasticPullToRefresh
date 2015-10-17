@@ -1,8 +1,8 @@
 # DGElasticPullToRefresh
 Elastic pull to refresh compontent developed in Swift
 
-![alt tag](https://raw.githubusercontent.com/gontovnik/DGElasticPullToRefresh/master/DGElasticPullToRefreshExample1.gif)
-![alt tag](https://raw.githubusercontent.com/gontovnik/DGElasticPullToRefresh/master/DGElasticPullToRefreshExample2.gif)
+![](https://raw.githubusercontent.com/gontovnik/DGElasticPullToRefresh/master/DGElasticPullToRefreshPreview1.gif)
+![](https://raw.githubusercontent.com/gontovnik/DGElasticPullToRefresh/master/DGElasticPullToRefreshPreview2.gif)
 
 ## Requirements
 * Xcode 7 or higher
