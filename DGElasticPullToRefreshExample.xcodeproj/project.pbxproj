@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0522B7FB1BCB9FA4001244DA /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0522B7FA1BCB9FA4001244DA /* DGElasticPullToRefreshLoadingViewCircle.swift */; settings = {ASSET_TAGS = (); }; };
-		0537E73E1BD1526A005DAF7B /* DGElasticPullToRefreshConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0537E73A1BD1526A005DAF7B /* DGElasticPullToRefreshConstants.swift */; settings = {ASSET_TAGS = (); }; };
-		0537E73F1BD1526A005DAF7B /* DGElasticPullToRefreshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0537E73B1BD1526A005DAF7B /* DGElasticPullToRefreshExtensions.swift */; settings = {ASSET_TAGS = (); }; };
-		0537E7401BD1526A005DAF7B /* DGElasticPullToRefreshLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0537E73C1BD1526A005DAF7B /* DGElasticPullToRefreshLoadingView.swift */; settings = {ASSET_TAGS = (); }; };
-		0537E7411BD1526A005DAF7B /* DGElasticPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0537E73D1BD1526A005DAF7B /* DGElasticPullToRefreshView.swift */; settings = {ASSET_TAGS = (); }; };
+		05B92F8C1BD25E7B006D60FB /* DGElasticPullToRefreshConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F871BD25E7B006D60FB /* DGElasticPullToRefreshConstants.swift */; settings = {ASSET_TAGS = (); }; };
+		05B92F8D1BD25E7B006D60FB /* DGElasticPullToRefreshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F881BD25E7B006D60FB /* DGElasticPullToRefreshExtensions.swift */; settings = {ASSET_TAGS = (); }; };
+		05B92F8E1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F891BD25E7B006D60FB /* DGElasticPullToRefreshLoadingView.swift */; settings = {ASSET_TAGS = (); }; };
+		05B92F8F1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F8A1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingViewCircle.swift */; settings = {ASSET_TAGS = (); }; };
+		05B92F901BD25E7B006D60FB /* DGElasticPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F8B1BD25E7B006D60FB /* DGElasticPullToRefreshView.swift */; settings = {ASSET_TAGS = (); }; };
 		05CD14691BBE8FEA00AF4030 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD14681BBE8FEA00AF4030 /* AppDelegate.swift */; };
 		05CD146B1BBE8FEA00AF4030 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD146A1BBE8FEA00AF4030 /* ViewController.swift */; };
 		05CD14701BBE8FEA00AF4030 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05CD146F1BBE8FEA00AF4030 /* Assets.xcassets */; };
@@ -20,11 +20,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0522B7FA1BCB9FA4001244DA /* DGElasticPullToRefreshLoadingViewCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DGElasticPullToRefreshLoadingViewCircle.swift; path = DGElasticPullToRefreshExample/DGElasticPullToRefreshLoadingViewCircle.swift; sourceTree = SOURCE_ROOT; };
-		0537E73A1BD1526A005DAF7B /* DGElasticPullToRefreshConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshConstants.swift; sourceTree = "<group>"; };
-		0537E73B1BD1526A005DAF7B /* DGElasticPullToRefreshExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshExtensions.swift; sourceTree = "<group>"; };
-		0537E73C1BD1526A005DAF7B /* DGElasticPullToRefreshLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshLoadingView.swift; sourceTree = "<group>"; };
-		0537E73D1BD1526A005DAF7B /* DGElasticPullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshView.swift; sourceTree = "<group>"; };
+		05B92F871BD25E7B006D60FB /* DGElasticPullToRefreshConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshConstants.swift; sourceTree = "<group>"; };
+		05B92F881BD25E7B006D60FB /* DGElasticPullToRefreshExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshExtensions.swift; sourceTree = "<group>"; };
+		05B92F891BD25E7B006D60FB /* DGElasticPullToRefreshLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshLoadingView.swift; sourceTree = "<group>"; };
+		05B92F8A1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingViewCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshLoadingViewCircle.swift; sourceTree = "<group>"; };
+		05B92F8B1BD25E7B006D60FB /* DGElasticPullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGElasticPullToRefreshView.swift; sourceTree = "<group>"; };
 		05CD14651BBE8FEA00AF4030 /* DGElasticPullToRefreshExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DGElasticPullToRefreshExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05CD14681BBE8FEA00AF4030 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05CD146A1BBE8FEA00AF4030 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,14 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0537E7391BD1526A005DAF7B /* DGElasticPullToRefresh */ = {
+		05B92F861BD25E7B006D60FB /* DGElasticPullToRefresh */ = {
 			isa = PBXGroup;
 			children = (
-				0522B7FA1BCB9FA4001244DA /* DGElasticPullToRefreshLoadingViewCircle.swift */,
-				0537E73A1BD1526A005DAF7B /* DGElasticPullToRefreshConstants.swift */,
-				0537E73B1BD1526A005DAF7B /* DGElasticPullToRefreshExtensions.swift */,
-				0537E73C1BD1526A005DAF7B /* DGElasticPullToRefreshLoadingView.swift */,
-				0537E73D1BD1526A005DAF7B /* DGElasticPullToRefreshView.swift */,
+				05B92F871BD25E7B006D60FB /* DGElasticPullToRefreshConstants.swift */,
+				05B92F881BD25E7B006D60FB /* DGElasticPullToRefreshExtensions.swift */,
+				05B92F891BD25E7B006D60FB /* DGElasticPullToRefreshLoadingView.swift */,
+				05B92F8A1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingViewCircle.swift */,
+				05B92F8B1BD25E7B006D60FB /* DGElasticPullToRefreshView.swift */,
 			);
 			path = DGElasticPullToRefresh;
 			sourceTree = SOURCE_ROOT;
@@ -76,7 +76,7 @@
 		05CD14671BBE8FEA00AF4030 /* DGElasticPullToRefreshExample */ = {
 			isa = PBXGroup;
 			children = (
-				0537E7391BD1526A005DAF7B /* DGElasticPullToRefresh */,
+				05B92F861BD25E7B006D60FB /* DGElasticPullToRefresh */,
 				05CD14681BBE8FEA00AF4030 /* AppDelegate.swift */,
 				05CD146A1BBE8FEA00AF4030 /* ViewController.swift */,
 				05FAB8BD1BBEF115004922F1 /* NavigationController.swift */,
@@ -156,14 +156,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05B92F8C1BD25E7B006D60FB /* DGElasticPullToRefreshConstants.swift in Sources */,
 				05CD146B1BBE8FEA00AF4030 /* ViewController.swift in Sources */,
-				0537E7401BD1526A005DAF7B /* DGElasticPullToRefreshLoadingView.swift in Sources */,
-				0537E7411BD1526A005DAF7B /* DGElasticPullToRefreshView.swift in Sources */,
+				05B92F901BD25E7B006D60FB /* DGElasticPullToRefreshView.swift in Sources */,
+				05B92F8E1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingView.swift in Sources */,
 				05FAB8BE1BBEF115004922F1 /* NavigationController.swift in Sources */,
+				05B92F8F1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
 				05CD14691BBE8FEA00AF4030 /* AppDelegate.swift in Sources */,
-				0537E73E1BD1526A005DAF7B /* DGElasticPullToRefreshConstants.swift in Sources */,
-				0537E73F1BD1526A005DAF7B /* DGElasticPullToRefreshExtensions.swift in Sources */,
-				0522B7FB1BCB9FA4001244DA /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
+				05B92F8D1BD25E7B006D60FB /* DGElasticPullToRefreshExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
