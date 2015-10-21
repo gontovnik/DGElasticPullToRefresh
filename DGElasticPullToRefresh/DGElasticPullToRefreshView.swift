@@ -312,10 +312,10 @@ class DGElasticPullToRefreshView: UIView {
             self.r3ControlPointView.center.y = centerY
             }, completion: { _ in
                 self.stopDisplayLink()
-                self.state = .Loading
                 self.resetScrollViewContentInset(shouldAddObserverWhenFinished: true, animated: false, completion: nil)
                 scrollView.dg_addObserver(self, forKeyPath: DGElasticPullToRefreshConstants.KeyPaths.ContentOffset)
                 scrollView.scrollEnabled = true
+                self.state = .Loading
         })
         
         bounceAnimationHelperView.center = CGPoint(x: 0.0, y: originalContentInsetTop + currentHeight())
