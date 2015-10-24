@@ -62,7 +62,7 @@ public class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoad
     // MARK: -
     // MARK: Constructors
     
-    init() {
+    public init() {
         super.init(frame: .zero)
         
         shapeLayer.lineWidth = 1.0

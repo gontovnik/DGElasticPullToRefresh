@@ -39,19 +39,30 @@ public class DGElasticPullToRefreshLoadingView: UIView {
         self.layer.mask = maskLayer
         return maskLayer
     }()
+    
+    // MARK: -
+    // MARK: Constructors
+    
+    public init() {
+        super.init(frame: .zero)
+    }
+
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: -
     // MARK: Methods
     
-    func setPullProgress(progress: CGFloat) {
+    public func setPullProgress(progress: CGFloat) {
         
     }
     
-    func startAnimating() {
+    public func startAnimating() {
         
     }
     
-    func stopLoading() {
+    public func stopLoading() {
         
     }
 
