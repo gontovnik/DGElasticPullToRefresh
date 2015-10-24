@@ -29,7 +29,7 @@ import UIKit
 // MARK: -
 // MARK: (CGFloat) Extension
 
-extension CGFloat {
+public extension CGFloat {
     
     public func toRadians() -> CGFloat {
         return (self * CGFloat(M_PI)) / 180.0
@@ -44,7 +44,7 @@ extension CGFloat {
 // MARK: -
 // MARK: DGElasticPullToRefreshLoadingViewCircle
 
-class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoadingView {
+public class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoadingView {
     
     // MARK: -
     // MARK: Vars
@@ -73,7 +73,7 @@ class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoadingView
         layer.addSublayer(shapeLayer)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -117,7 +117,7 @@ class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoadingView
         return shapeLayer.valueForKeyPath("transform.rotation.z") as! CGFloat
     }
     
-    override func tintColorDidChange() {
+    override public func tintColorDidChange() {
         super.tintColorDidChange()
         
         shapeLayer.strokeColor = tintColor.CGColor
@@ -126,7 +126,7 @@ class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoadingView
     // MARK: -
     // MARK: Layout
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         
         shapeLayer.frame = bounds

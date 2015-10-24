@@ -30,7 +30,7 @@ import ObjectiveC
 // MARK: -
 // MARK: (NSObject) Extension
 
-extension NSObject {
+public extension NSObject {
     
     // MARK: -
     // MARK: Vars
@@ -79,7 +79,7 @@ extension NSObject {
 // MARK: -
 // MARK: (UIScrollView) Extension
 
-extension UIScrollView {
+public extension UIScrollView {
     
     // MARK: -
     // MARK: Vars
@@ -160,7 +160,7 @@ extension UIScrollView {
 // MARK: -
 // MARK: (UIView) Extension
 
-extension UIView {
+public extension UIView {
     func dg_center(usePresentationLayerIfPossible: Bool) -> CGPoint {
         if usePresentationLayerIfPossible, let presentationLayer = layer.presentationLayer() as? CALayer {
             // Position can be used as a center, because anchorPoint is (0.5, 0.5)
@@ -173,7 +173,7 @@ extension UIView {
 // MARK: -
 // MARK: (UIPanGestureRecognizer) Extension
 
-extension UIPanGestureRecognizer {
+public extension UIPanGestureRecognizer {
     func dg_resign() {
         enabled = false
         enabled = true
@@ -183,7 +183,7 @@ extension UIPanGestureRecognizer {
 // MARK: -
 // MARK: (UIGestureRecognizerState) Extension
 
-extension UIGestureRecognizerState {
+public extension UIGestureRecognizerState {
     func dg_isAnyOf(values: [UIGestureRecognizerState]) -> Bool {
         return values.contains({ $0 == self })
     }

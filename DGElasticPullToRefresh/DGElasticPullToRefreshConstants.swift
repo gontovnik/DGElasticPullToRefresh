@@ -26,7 +26,7 @@ SOFTWARE.
 
 import CoreGraphics
 
-struct DGElasticPullToRefreshConstants {
+public struct DGElasticPullToRefreshConstants {
     
     struct KeyPaths {
         static let ContentOffset = "contentOffset"

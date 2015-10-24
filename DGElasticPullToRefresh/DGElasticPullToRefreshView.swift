@@ -29,6 +29,7 @@ import UIKit
 // MARK: -
 // MARK: DGElasticPullToRefreshState
 
+public
 enum DGElasticPullToRefreshState: Int {
     case Stopped
     case Dragging
@@ -44,7 +45,7 @@ enum DGElasticPullToRefreshState: Int {
 // MARK: -
 // MARK: DGElasticPullToRefreshView
 
-class DGElasticPullToRefreshView: UIView {
+public class DGElasticPullToRefreshView: UIView {
     
     // MARK: -
     // MARK: Vars
@@ -143,7 +144,7 @@ class DGElasticPullToRefreshView: UIView {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("applicationWillEnterForeground"), name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -156,7 +157,7 @@ class DGElasticPullToRefreshView: UIView {
     // MARK: -
     // MARK: Observer
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override public func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if keyPath == DGElasticPullToRefreshConstants.KeyPaths.ContentOffset {
             if let newContentOffsetY = change?[NSKeyValueChangeNewKey]?.CGPointValue.y, let scrollView = scrollView() {
                 if state.isAnyOf([.Loading, .AnimatingToStopped]) && newContentOffsetY < -scrollView.contentInset.top {
@@ -374,7 +375,7 @@ class DGElasticPullToRefreshView: UIView {
         loadingView?.maskLayer.path = shapeLayer.path
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         
         if let scrollView = scrollView() where state != .AnimatingBounce {
