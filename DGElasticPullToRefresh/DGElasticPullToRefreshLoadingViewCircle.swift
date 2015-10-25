@@ -62,7 +62,7 @@ public class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoad
     // MARK: -
     // MARK: Constructors
     
-    public init() {
+    public override init() {
         super.init(frame: .zero)
         
         shapeLayer.lineWidth = 1.0
@@ -80,7 +80,7 @@ public class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoad
     // MARK: -
     // MARK: Methods
     
-    override func setPullProgress(progress: CGFloat) {
+    override public func setPullProgress(progress: CGFloat) {
         super.setPullProgress(progress)
         
         shapeLayer.strokeEnd = min(0.9 * progress, 0.9)
@@ -93,7 +93,7 @@ public class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoad
         }
     }
     
-    override func startAnimating() {
+    override public func startAnimating() {
         super.startAnimating()
         
         if shapeLayer.animationForKey(kRotationAnimation) != nil { return }
@@ -107,7 +107,7 @@ public class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoad
         shapeLayer.addAnimation(rotationAnimation, forKey: kRotationAnimation)
     }
     
-    override func stopLoading() {
+    override public func stopLoading() {
         super.stopLoading()
         
         shapeLayer.removeAnimationForKey(kRotationAnimation)

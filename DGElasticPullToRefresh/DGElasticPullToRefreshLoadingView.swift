@@ -46,6 +46,10 @@ public class DGElasticPullToRefreshLoadingView: UIView {
     public init() {
         super.init(frame: .zero)
     }
+    
+    public override init(frame: CGRect) {
+        super.init(frame: .zero)
+    }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
