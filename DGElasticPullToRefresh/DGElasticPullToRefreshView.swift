@@ -198,6 +198,10 @@ public class DGElasticPullToRefreshView: UIView {
     }
     
     func stopLoading() {
+        // Prevent stop close animation
+        if state == .AnimatingToStopped {
+            return
+        }
         state = .AnimatingToStopped
     }
     
