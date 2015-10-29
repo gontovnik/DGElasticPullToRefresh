@@ -151,6 +151,7 @@ public class DGElasticPullToRefreshView: UIView {
     // MARK: -
     
     deinit {
+        observing = false
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
