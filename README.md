@@ -45,6 +45,14 @@ tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, b
 tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
 ```
 
+Do not forget to remove pull to refresh on view controller deinit. It is a temporary solution. 
+
+``` swift
+deinit() {
+    tableView.dg_removePullToRefresh()
+}
+```
+
 ### Description
 
 Add pull to refresh without loading view:
