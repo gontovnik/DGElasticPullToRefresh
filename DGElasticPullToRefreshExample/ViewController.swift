@@ -44,6 +44,10 @@ class ViewController: UIViewController {
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
     }
     
+    deinit {
+        tableView.dg_removePullToRefresh()
+    }
+    
 }
 
 // MARK: -
