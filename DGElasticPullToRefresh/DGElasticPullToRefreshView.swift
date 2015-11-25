@@ -278,7 +278,7 @@ public class DGElasticPullToRefreshView: UIView {
         
         let animationBlock = { scrollView.contentInset = contentInset }
         let completionBlock = { () -> Void in
-            if shouldAddObserverWhenFinished {
+            if shouldAddObserverWhenFinished && self.observing {
                 scrollView.dg_addObserver(self, forKeyPath: DGElasticPullToRefreshConstants.KeyPaths.ContentInset)
             }
             completion?()
