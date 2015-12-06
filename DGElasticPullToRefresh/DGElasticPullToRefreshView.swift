@@ -162,7 +162,6 @@ public class DGElasticPullToRefreshView: UIView {
         if keyPath == DGElasticPullToRefreshConstants.KeyPaths.ContentOffset {
             if let newContentOffsetY = change?[NSKeyValueChangeNewKey]?.CGPointValue.y, let scrollView = scrollView() {
                 if state.isAnyOf([.Loading, .AnimatingToStopped]) && newContentOffsetY < -scrollView.contentInset.top {
-                    scrollView.dg_stopScrollingAnimation()
                     scrollView.contentOffset.y = -scrollView.contentInset.top
                 } else {
                     scrollViewDidChangeContentOffset(dragging: scrollView.dragging)
@@ -252,7 +251,6 @@ public class DGElasticPullToRefreshView: UIView {
         } else if state == .Dragging && dragging == false {
             if offsetY >= DGElasticPullToRefreshConstants.MinOffsetToPull {
                 state = .AnimatingBounce
-                scrollView()?.dg_stopScrollingAnimation()
             } else {
                 state = .Stopped
             }
@@ -278,7 +276,7 @@ public class DGElasticPullToRefreshView: UIView {
         
         let animationBlock = { scrollView.contentInset = contentInset }
         let completionBlock = { () -> Void in
-            if shouldAddObserverWhenFinished {
+            if shouldAddObserverWhenFinished && self.observing {
                 scrollView.dg_addObserver(self, forKeyPath: DGElasticPullToRefreshConstants.KeyPaths.ContentInset)
             }
             completion?()

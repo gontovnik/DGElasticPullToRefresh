@@ -116,10 +116,6 @@ public extension UIScrollView {
     // MARK: -
     // MARK: Methods (Public)
     
-    public func dg_addPullToRefreshWithActionHandler(actionHandler: () -> Void) {
-        dg_addPullToRefreshWithActionHandler(actionHandler, loadingView: nil)
-    }
-    
     public func dg_addPullToRefreshWithActionHandler(actionHandler: () -> Void, loadingView: DGElasticPullToRefreshLoadingView?) {
         multipleTouchEnabled = false
         panGestureRecognizer.maximumNumberOfTouches = 1
@@ -147,14 +143,6 @@ public extension UIScrollView {
     public func dg_stopLoading() {
         pullToRefreshView.stopLoading()
     }
-    
-    func dg_stopScrollingAnimation() {
-        if let superview = self.superview, let index = superview.subviews.indexOf({ $0 == self }) as Int! {
-            removeFromSuperview()
-            superview.insertSubview(self, atIndex: index)
-        }
-    }
-    
 }
 
 // MARK: -
