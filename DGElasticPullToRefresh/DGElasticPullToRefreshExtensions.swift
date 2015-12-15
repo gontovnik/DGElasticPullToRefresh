@@ -130,6 +130,7 @@ public extension UIScrollView {
     public func dg_removePullToRefresh() {
         pullToRefreshView.observing = false
         pullToRefreshView.removeFromSuperview()
+        _pullToRefreshView = nil // remove associated object, otherwise it doesn't get deallocated
     }
     
     public func dg_setPullToRefreshBackgroundColor(color: UIColor) {
