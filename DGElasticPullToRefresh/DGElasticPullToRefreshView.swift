@@ -149,7 +149,14 @@ public class DGElasticPullToRefreshView: UIView {
     }
     
     // MARK: -
-    
+
+    /**
+    Has to be called when the receiver is no longer required. Otherwise the main loop holds a reference to the receiver which in turn will prevent the receiver from being deallocated.
+    */
+    func disassociateDisplayLink() {
+        displayLink?.invalidate()
+    }
+
     deinit {
         observing = false
         NSNotificationCenter.defaultCenter().removeObserver(self)
