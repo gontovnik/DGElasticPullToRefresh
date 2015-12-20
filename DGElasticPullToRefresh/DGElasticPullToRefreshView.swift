@@ -313,25 +313,29 @@ public class DGElasticPullToRefreshView: UIView {
         startDisplayLink()
         scrollView.dg_removeObserver(self, forKeyPath: DGElasticPullToRefreshConstants.KeyPaths.ContentOffset)
         scrollView.dg_removeObserver(self, forKeyPath: DGElasticPullToRefreshConstants.KeyPaths.ContentInset)
-        UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.43, initialSpringVelocity: 0.0, options: [], animations: { () -> Void in
-            self.cControlPointView.center.y = centerY
-            self.l1ControlPointView.center.y = centerY
-            self.l2ControlPointView.center.y = centerY
-            self.l3ControlPointView.center.y = centerY
-            self.r1ControlPointView.center.y = centerY
-            self.r2ControlPointView.center.y = centerY
-            self.r3ControlPointView.center.y = centerY
-            }, completion: { _ in
-                self.stopDisplayLink()
-                self.resetScrollViewContentInset(shouldAddObserverWhenFinished: true, animated: false, completion: nil)
-                scrollView.dg_addObserver(self, forKeyPath: DGElasticPullToRefreshConstants.KeyPaths.ContentOffset)
-                scrollView.scrollEnabled = true
-                self.state = .Loading
-        })
+        UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.43, initialSpringVelocity: 0.0, options: [], animations: { [weak self] in
+            self?.cControlPointView.center.y = centerY
+            self?.l1ControlPointView.center.y = centerY
+            self?.l2ControlPointView.center.y = centerY
+            self?.l3ControlPointView.center.y = centerY
+            self?.r1ControlPointView.center.y = centerY
+            self?.r2ControlPointView.center.y = centerY
+            self?.r3ControlPointView.center.y = centerY
+            }, completion: { [weak self] _ in
+                self?.stopDisplayLink()
+                self?.resetScrollViewContentInset(shouldAddObserverWhenFinished: true, animated: false, completion: nil)
+                if let strongSelf = self, scrollView = strongSelf.scrollView() {
+                    scrollView.dg_addObserver(strongSelf, forKeyPath: DGElasticPullToRefreshConstants.KeyPaths.ContentOffset)
+                    scrollView.scrollEnabled = true
+                }
+                self?.state = .Loading
+            })
         
         bounceAnimationHelperView.center = CGPoint(x: 0.0, y: originalContentInsetTop + currentHeight())
-        UIView.animateWithDuration(duration * 0.4, animations: { () -> Void in
-            self.bounceAnimationHelperView.center = CGPoint(x: 0.0, y: self.originalContentInsetTop + DGElasticPullToRefreshConstants.LoadingContentInset)
+        UIView.animateWithDuration(duration * 0.4, animations: { [weak self] in
+            if let contentInsetTop = self?.originalContentInsetTop {
+                self?.bounceAnimationHelperView.center = CGPoint(x: 0.0, y: contentInsetTop + DGElasticPullToRefreshConstants.LoadingContentInset)
+            }
             }, completion: nil)
     }
     
