@@ -20,7 +20,7 @@ Open and run the DGElasticPullToRefreshExample project in Xcode to see DGElastic
 
 ## Installation
 
-### Cocoapods
+### CocoaPods
 
 ``` ruby
 pod "DGElasticPullToRefresh"
