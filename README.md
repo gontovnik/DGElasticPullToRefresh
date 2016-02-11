@@ -81,6 +81,12 @@ Remove pull to refresh:
 func dg_removePullToRefresh()
 ```
 
+Set auto start loading:
+
+``` swift
+func dg_startLoading()
+```
+
 Change pull to refresh background color:
 
 ``` swift
