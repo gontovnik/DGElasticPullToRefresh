@@ -301,8 +301,11 @@ public class DGElasticPullToRefreshView: UIView {
         }
     }
     
-    private func animateBounce() {
+    private func animateBounce()
+    {
         guard let scrollView = scrollView() else { return }
+        if (!self.observing) { return }
+        
         
         resetScrollViewContentInset(shouldAddObserverWhenFinished: false, animated: false, completion: nil)
         
