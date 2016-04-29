@@ -81,67 +81,49 @@ public extension NSObject {
 
 public extension UIScrollView {
     
-    // MARK: -
-    // MARK: Vars
-    
+    // MARK: - Vars
+
     private struct dg_associatedKeys {
         static var pullToRefreshView = "pullToRefreshView"
     }
-    
-    private var _pullToRefreshView: DGElasticPullToRefreshView? {
+
+    private var pullToRefreshView: DGElasticPullToRefreshView? {
         get {
-            if let pullToRefreshView = objc_getAssociatedObject(self, &dg_associatedKeys.pullToRefreshView) as? DGElasticPullToRefreshView {
-                return pullToRefreshView
-            }
-            
-            return nil
+            return objc_getAssociatedObject(self, &dg_associatedKeys.pullToRefreshView) as? DGElasticPullToRefreshView
         }
+
         set {
             objc_setAssociatedObject(self, &dg_associatedKeys.pullToRefreshView, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
-    private var pullToRefreshView: DGElasticPullToRefreshView! {
-        get {
-            if let pullToRefreshView = _pullToRefreshView {
-                return pullToRefreshView
-            } else {
-                let pullToRefreshView = DGElasticPullToRefreshView()
-                _pullToRefreshView = pullToRefreshView
-                return pullToRefreshView
-            }
-        }
-    }
-    
-    // MARK: -
-    // MARK: Methods (Public)
-    
-    public func dg_addPullToRefreshWithActionHandler(actionHandler: () -> Void) {
-        dg_addPullToRefreshWithActionHandler(actionHandler, loadingView: nil)
-    }
+    // MARK: - Methods (Public)
     
     public func dg_addPullToRefreshWithActionHandler(actionHandler: () -> Void, loadingView: DGElasticPullToRefreshLoadingView?) {
         multipleTouchEnabled = false
         panGestureRecognizer.maximumNumberOfTouches = 1
-        
+
+        let pullToRefreshView = DGElasticPullToRefreshView()
+        self.pullToRefreshView = pullToRefreshView
         pullToRefreshView.actionHandler = actionHandler
         pullToRefreshView.loadingView = loadingView
         addSubview(pullToRefreshView)
-        
+
         pullToRefreshView.observing = true
     }
     
     public func dg_removePullToRefresh() {
-        pullToRefreshView.observing = false
-        pullToRefreshView.removeFromSuperview()
+        pullToRefreshView?.disassociateDisplayLink()
+        pullToRefreshView?.observing = false
+        pullToRefreshView?.removeFromSuperview()
     }
     
     public func dg_setPullToRefreshBackgroundColor(color: UIColor) {
-        pullToRefreshView.backgroundColor = color
+        pullToRefreshView?.backgroundColor = color
     }
     
     public func dg_setPullToRefreshFillColor(color: UIColor) {
-        pullToRefreshView.fillColor = color
+        pullToRefreshView?.fillColor = color
     }
     
     public func dg_stopLoading() {
@@ -154,7 +136,6 @@ public extension UIScrollView {
 //            superview.insertSubview(self, atIndex: index)
 //        }
     }
-    
 }
 
 // MARK: -

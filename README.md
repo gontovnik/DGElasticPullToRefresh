@@ -20,7 +20,7 @@ Open and run the DGElasticPullToRefreshExample project in Xcode to see DGElastic
 
 ## Installation
 
-### Cocoapods
+### CocoaPods
 
 ``` ruby
 pod "DGElasticPullToRefresh"
@@ -79,6 +79,12 @@ Remove pull to refresh:
 
 ``` swift
 func dg_removePullToRefresh()
+```
+
+Set auto start loading:
+
+``` swift
+func dg_startLoading()
 ```
 
 Change pull to refresh background color:
