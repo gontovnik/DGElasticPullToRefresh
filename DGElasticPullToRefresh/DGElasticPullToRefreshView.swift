@@ -123,7 +123,7 @@ public class DGElasticPullToRefreshView: UIView {
 	init() {
 		super.init(frame: CGRect.zero)
 
-		displayLink = CADisplayLink(target: self, selector: Selector("displayLinkTick"))
+		displayLink = CADisplayLink(target: self, selector: #selector(DGElasticPullToRefreshView.displayLinkTick))
 		displayLink.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
 		displayLink.paused = true
 
@@ -141,7 +141,7 @@ public class DGElasticPullToRefreshView: UIView {
 		addSubview(r2ControlPointView)
 		addSubview(r3ControlPointView)
 
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("applicationWillEnterForeground"), name: UIApplicationWillEnterForegroundNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DGElasticPullToRefreshView.applicationWillEnterForeground), name: UIApplicationWillEnterForegroundNotification, object: nil)
 	}
 
 	required public init?(coder aDecoder: NSCoder) {
