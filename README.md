@@ -48,7 +48,7 @@ tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
 Do not forget to remove pull to refresh on view controller deinit. It is a temporary solution. 
 
 ``` swift
-deinit() {
+deinit {
     tableView.dg_removePullToRefresh()
 }
 ```
