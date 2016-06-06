@@ -60,6 +60,10 @@ public class DGElasticPullToRefreshView: UIView {
             if previousValue == .Dragging && newValue == .AnimatingBounce {
                 loadingView?.startAnimating()
                 animateBounce()
+            } else if previousValue == .Stopped && newValue == .AnimatingBounce {
+                loadingView?.setPullProgress(1.0)
+                loadingView?.startAnimating()
+                animateBounce()
             } else if newValue == .Loading && actionHandler != nil {
                 actionHandler()
             } else if newValue == .AnimatingToStopped {
@@ -123,7 +127,7 @@ public class DGElasticPullToRefreshView: UIView {
     init() {
         super.init(frame: CGRect.zero)
         
-        displayLink = CADisplayLink(target: self, selector: #selector(DGElasticPullToRefreshView.displayLinkTick))
+        displayLink = CADisplayLink(target: self, selector: #selector(self.displayLinkTick))
         displayLink.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
         displayLink.paused = true
         
@@ -141,7 +145,7 @@ public class DGElasticPullToRefreshView: UIView {
         addSubview(r2ControlPointView)
         addSubview(r3ControlPointView)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DGElasticPullToRefreshView.applicationWillEnterForeground), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.applicationWillEnterForeground), name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -149,14 +153,14 @@ public class DGElasticPullToRefreshView: UIView {
     }
     
     // MARK: -
-
+    
     /**
     Has to be called when the receiver is no longer required. Otherwise the main loop holds a reference to the receiver which in turn will prevent the receiver from being deallocated.
     */
     func disassociateDisplayLink() {
         displayLink?.invalidate()
     }
-
+    
     deinit {
         observing = false
         NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -202,6 +206,14 @@ public class DGElasticPullToRefreshView: UIView {
     
     private func scrollView() -> UIScrollView? {
         return superview as? UIScrollView
+    }
+    
+    func startLoading() {
+        if state != .Stopped {
+            return
+        } else {
+            state = .AnimatingBounce
+        }
     }
     
     func stopLoading() {
@@ -301,12 +313,9 @@ public class DGElasticPullToRefreshView: UIView {
         }
     }
     
-    private func animateBounce()
-    {
+    private func animateBounce() {
         guard let scrollView = scrollView() else { return }
-        if (!self.observing) { return }
-        
-        
+
         resetScrollViewContentInset(shouldAddObserverWhenFinished: false, animated: false, completion: nil)
         
         let centerY = DGElasticPullToRefreshConstants.LoadingContentInset
@@ -359,7 +368,7 @@ public class DGElasticPullToRefreshView: UIView {
         
         if state == .AnimatingBounce {
             guard let scrollView = scrollView() else { return }
-        
+
             scrollView.contentInset.top = bounceAnimationHelperView.dg_center(isAnimating()).y
             scrollView.contentOffset.y = -scrollView.contentInset.top
             
@@ -369,7 +378,7 @@ public class DGElasticPullToRefreshView: UIView {
         } else if state == .AnimatingToStopped {
             height = actualContentOffsetY()
         }
-    
+
         shapeLayer.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height)
         shapeLayer.path = currentPath()
         
