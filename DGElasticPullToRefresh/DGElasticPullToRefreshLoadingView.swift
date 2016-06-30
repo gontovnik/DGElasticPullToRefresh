@@ -33,8 +33,8 @@ public class DGElasticPullToRefreshLoadingView: UIView {
     
     lazy var maskLayer: CAShapeLayer = {
         let maskLayer = CAShapeLayer()
-        maskLayer.backgroundColor = UIColor.clearColor().CGColor
-        maskLayer.fillColor = UIColor.blackColor().CGColor
+        maskLayer.backgroundColor = UIColor.clear().cgColor
+        maskLayer.fillColor = UIColor.black().cgColor
         maskLayer.actions = ["path" : NSNull(), "position" : NSNull(), "bounds" : NSNull()]
         self.layer.mask = maskLayer
         return maskLayer
@@ -58,7 +58,7 @@ public class DGElasticPullToRefreshLoadingView: UIView {
     // MARK: -
     // MARK: Methods
     
-    public func setPullProgress(progress: CGFloat) {
+    public func setPullProgress(_ progress: CGFloat) {
         
     }
     
