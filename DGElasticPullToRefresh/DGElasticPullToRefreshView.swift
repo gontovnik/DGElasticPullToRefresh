@@ -182,7 +182,7 @@ public class DGElasticPullToRefreshView: UIView {
         } else if keyPath == DGElasticPullToRefreshConstants.KeyPaths.Frame {
             layoutSubviews()
         } else if keyPath == DGElasticPullToRefreshConstants.KeyPaths.PanGestureRecognizerState {
-            if let gestureState = scrollView()?.panGestureRecognizer.state where gestureState.dg_isAnyOf([.ended, .cancelled, .failed]) {
+            if let gestureState = scrollView()?.panGestureRecognizer.state , gestureState.dg_isAnyOf([.ended, .cancelled, .failed]) {
                 scrollViewDidChangeContentOffset(dragging: false)
             }
         }
@@ -327,7 +327,7 @@ public class DGElasticPullToRefreshView: UIView {
             }, completion: { [weak self] _ in
                 self?.stopDisplayLink()
                 self?.resetScrollViewContentInset(shouldAddObserverWhenFinished: true, animated: false, completion: nil)
-                if let strongSelf = self, scrollView = strongSelf.scrollView() {
+                if let strongSelf = self, let scrollView = strongSelf.scrollView() {
                     scrollView.dg_addObserver(strongSelf, forKeyPath: DGElasticPullToRefreshConstants.KeyPaths.ContentOffset)
                     scrollView.isScrollEnabled = true
                 }
@@ -395,7 +395,7 @@ public class DGElasticPullToRefreshView: UIView {
     override public func layoutSubviews() {
         super.layoutSubviews()
         
-        if let scrollView = scrollView() where state != .animatingBounce {
+        if let scrollView = scrollView() , state != .animatingBounce {
             let width = scrollView.bounds.width
             let height = currentHeight()
             
