@@ -80,20 +80,33 @@ public extension NSObject {
 // MARK: (UIScrollView) Extension
 
 public extension UIScrollView {
-    
-    // MARK: - Vars
+
+    // MARK: -
+    // MARK: Vars
 
     private struct dg_associatedKeys {
         static var pullToRefreshView = "pullToRefreshView"
     }
-
-    private var pullToRefreshView: DGElasticPullToRefreshView? {
+    
+    private var _pullToRefreshView: DGElasticPullToRefreshView? {
         get {
             return objc_getAssociatedObject(self, &dg_associatedKeys.pullToRefreshView) as? DGElasticPullToRefreshView
         }
-
+        
         set {
             objc_setAssociatedObject(self, &dg_associatedKeys.pullToRefreshView, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
+    private var pullToRefreshView: DGElasticPullToRefreshView! {
+        get {
+            if let pullToRefreshView = _pullToRefreshView {
+                return pullToRefreshView
+            } else {
+                let pullToRefreshView = DGElasticPullToRefreshView()
+                _pullToRefreshView = pullToRefreshView
+                return pullToRefreshView
+            }
         }
     }
     
@@ -102,13 +115,11 @@ public extension UIScrollView {
     public func dg_addPullToRefreshWithActionHandler(actionHandler: () -> Void, loadingView: DGElasticPullToRefreshLoadingView?) {
         multipleTouchEnabled = false
         panGestureRecognizer.maximumNumberOfTouches = 1
-
-        let pullToRefreshView = DGElasticPullToRefreshView()
-        self.pullToRefreshView = pullToRefreshView
+        
         pullToRefreshView.actionHandler = actionHandler
         pullToRefreshView.loadingView = loadingView
         addSubview(pullToRefreshView)
-
+        
         pullToRefreshView.observing = true
     }
     
@@ -124,6 +135,10 @@ public extension UIScrollView {
     
     public func dg_setPullToRefreshFillColor(color: UIColor) {
         pullToRefreshView?.fillColor = color
+    }
+    
+    public func dg_startLoading() {
+        pullToRefreshView?.startLoading()
     }
     
     public func dg_stopLoading() {
