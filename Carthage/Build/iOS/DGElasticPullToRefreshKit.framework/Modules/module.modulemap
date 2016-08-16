@@ -1,0 +1,10 @@
+framework module DGElasticPullToRefreshKit {
+  umbrella header "DGElasticPullToRefreshKit.h"
+
+  export *
+  module * { export * }
+}
+
+module DGElasticPullToRefreshKit.Swift {
+    header "DGElasticPullToRefreshKit-Swift.h"
+}

@@ -38,7 +38,7 @@ enum DGElasticPullToRefreshState: Int {
     case animatingToStopped
     
     func isAnyOf(_ values: [DGElasticPullToRefreshState]) -> Bool {
-        return values.contains({ $0 == self })
+        return values.contains(self)
     }
 }
 
@@ -103,7 +103,7 @@ public class DGElasticPullToRefreshView: UIView {
         }
     }
     
-    var fillColor: UIColor = .clear() { didSet { shapeLayer.fillColor = fillColor.cgColor } }
+    var fillColor: UIColor = .clear { didSet { shapeLayer.fillColor = fillColor.cgColor } }
     
     // MARK: Views
     
@@ -124,11 +124,11 @@ public class DGElasticPullToRefreshView: UIView {
         super.init(frame: CGRect.zero)
         
         displayLink = CADisplayLink(target: self, selector: #selector(DGElasticPullToRefreshView.displayLinkTick))
-        displayLink.add(to: RunLoop.main(), forMode: RunLoopMode.commonModes.rawValue)
+        displayLink.add(to: RunLoop.main, forMode: RunLoopMode(rawValue: RunLoopMode.commonModes.rawValue))
         displayLink.isPaused = true
         
-        shapeLayer.backgroundColor = UIColor.clear().cgColor
-        shapeLayer.fillColor = UIColor.black().cgColor
+        shapeLayer.backgroundColor = UIColor.clear.cgColor
+        shapeLayer.fillColor = UIColor.black.cgColor
         shapeLayer.actions = ["path" : NSNull(), "position" : NSNull(), "bounds" : NSNull()]
         layer.addSublayer(shapeLayer)
         
@@ -141,7 +141,7 @@ public class DGElasticPullToRefreshView: UIView {
         addSubview(r2ControlPointView)
         addSubview(r3ControlPointView)
         
-        NotificationCenter.default().addObserver(self, selector: #selector(DGElasticPullToRefreshView.applicationWillEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DGElasticPullToRefreshView.applicationWillEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -159,7 +159,7 @@ public class DGElasticPullToRefreshView: UIView {
 
     deinit {
         observing = false
-        NotificationCenter.default().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK: -
@@ -176,13 +176,13 @@ public class DGElasticPullToRefreshView: UIView {
                 layoutSubviews()
             }
         } else if keyPath == DGElasticPullToRefreshConstants.KeyPaths.ContentInset {
-            if let newContentInsetTop = change?[NSKeyValueChangeKey.newKey]?.uiEdgeInsetsValue().top {
+            if let newContentInsetTop = change?[NSKeyValueChangeKey.newKey]?.uiEdgeInsetsValue.top {
                 originalContentInsetTop = newContentInsetTop
             }
         } else if keyPath == DGElasticPullToRefreshConstants.KeyPaths.Frame {
             layoutSubviews()
         } else if keyPath == DGElasticPullToRefreshConstants.KeyPaths.PanGestureRecognizerState {
-            if let gestureState = scrollView()?.panGestureRecognizer.state where gestureState.dg_isAnyOf([.ended, .cancelled, .failed]) {
+            if let gestureState = scrollView()?.panGestureRecognizer.state , gestureState.dg_isAnyOf([.ended, .cancelled, .failed]) {
                 scrollViewDidChangeContentOffset(dragging: false)
             }
         }
@@ -327,7 +327,7 @@ public class DGElasticPullToRefreshView: UIView {
             }, completion: { [weak self] _ in
                 self?.stopDisplayLink()
                 self?.resetScrollViewContentInset(shouldAddObserverWhenFinished: true, animated: false, completion: nil)
-                if let strongSelf = self, scrollView = strongSelf.scrollView() {
+                if let strongSelf = self, let scrollView = strongSelf.scrollView() {
                     scrollView.dg_addObserver(strongSelf, forKeyPath: DGElasticPullToRefreshConstants.KeyPaths.ContentOffset)
                     scrollView.isScrollEnabled = true
                 }
@@ -395,7 +395,7 @@ public class DGElasticPullToRefreshView: UIView {
     override public func layoutSubviews() {
         super.layoutSubviews()
         
-        if let scrollView = scrollView() where state != .animatingBounce {
+        if let scrollView = scrollView() , state != .animatingBounce {
             let width = scrollView.bounds.width
             let height = currentHeight()
             

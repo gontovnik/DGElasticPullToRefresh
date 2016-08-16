@@ -159,6 +159,6 @@ public extension UIPanGestureRecognizer {
 
 public extension UIGestureRecognizerState {
     func dg_isAnyOf(_ values: [UIGestureRecognizerState]) -> Bool {
-        return values.contains({ $0 == self })
+        return values.contains(self)
     }
 }
