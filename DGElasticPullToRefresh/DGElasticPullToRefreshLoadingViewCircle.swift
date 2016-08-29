@@ -44,15 +44,15 @@ public extension CGFloat {
 // MARK: -
 // MARK: DGElasticPullToRefreshLoadingViewCircle
 
-public class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoadingView {
+open class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoadingView {
     
     // MARK: -
     // MARK: Vars
     
-    private let kRotationAnimation = "kRotationAnimation"
+    fileprivate let kRotationAnimation = "kRotationAnimation"
     
-    private let shapeLayer = CAShapeLayer()
-    private lazy var identityTransform: CATransform3D = {
+    fileprivate let shapeLayer = CAShapeLayer()
+    fileprivate lazy var identityTransform: CATransform3D = {
         var transform = CATransform3DIdentity
         transform.m34 = CGFloat(1.0 / -500.0)
         transform = CATransform3DRotate(transform, CGFloat(-90.0).toRadians(), 0.0, 0.0, 1.0)
@@ -66,8 +66,8 @@ public class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoad
         super.init(frame: .zero)
         
         shapeLayer.lineWidth = 1.0
-        shapeLayer.fillColor = UIColor.clearColor().CGColor
-        shapeLayer.strokeColor = tintColor.CGColor
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.strokeColor = tintColor.cgColor
         shapeLayer.actions = ["strokeEnd" : NSNull(), "transform" : NSNull()]
         shapeLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         layer.addSublayer(shapeLayer)
@@ -80,7 +80,7 @@ public class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoad
     // MARK: -
     // MARK: Methods
     
-    override public func setPullProgress(progress: CGFloat) {
+    override open func setPullProgress(_ progress: CGFloat) {
         super.setPullProgress(progress)
         
         shapeLayer.strokeEnd = min(0.9 * progress, 0.9)
@@ -93,46 +93,46 @@ public class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoad
         }
     }
     
-    override public func startAnimating() {
+    override open func startAnimating() {
         super.startAnimating()
         
-        if shapeLayer.animationForKey(kRotationAnimation) != nil { return }
+        if shapeLayer.animation(forKey: kRotationAnimation) != nil { return }
         
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotationAnimation.toValue = CGFloat(2 * M_PI) + currentDegree()
         rotationAnimation.duration = 1.0
         rotationAnimation.repeatCount = Float.infinity
-        rotationAnimation.removedOnCompletion = false
+        rotationAnimation.isRemovedOnCompletion = false
         rotationAnimation.fillMode = kCAFillModeForwards
-        shapeLayer.addAnimation(rotationAnimation, forKey: kRotationAnimation)
+        shapeLayer.add(rotationAnimation, forKey: kRotationAnimation)
     }
     
-    override public func stopLoading() {
+    override open func stopLoading() {
         super.stopLoading()
         
-        shapeLayer.removeAnimationForKey(kRotationAnimation)
+        shapeLayer.removeAnimation(forKey: kRotationAnimation)
     }
     
-    private func currentDegree() -> CGFloat {
-        return shapeLayer.valueForKeyPath("transform.rotation.z") as! CGFloat
+    fileprivate func currentDegree() -> CGFloat {
+        return shapeLayer.value(forKeyPath: "transform.rotation.z") as! CGFloat
     }
     
-    override public func tintColorDidChange() {
+    override open func tintColorDidChange() {
         super.tintColorDidChange()
         
-        shapeLayer.strokeColor = tintColor.CGColor
+        shapeLayer.strokeColor = tintColor.cgColor
     }
     
     // MARK: -
     // MARK: Layout
     
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         
         shapeLayer.frame = bounds
         
         let inset = shapeLayer.lineWidth / 2.0
-        shapeLayer.path = UIBezierPath(ovalInRect: CGRectInset(shapeLayer.bounds, inset, inset)).CGPath
+        shapeLayer.path = UIBezierPath(ovalIn: shapeLayer.bounds.insetBy(dx: inset, dy: inset)).cgPath
     }
     
 }
