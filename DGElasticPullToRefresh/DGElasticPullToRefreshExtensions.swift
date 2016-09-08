@@ -144,7 +144,7 @@ public extension UIScrollView {
 
 public extension UIView {
     func dg_center(usePresentationLayerIfPossible: Bool) -> CGPoint {
-        if usePresentationLayerIfPossible, let presentationLayer = layer.presentationLayer() as? CALayer {
+        if usePresentationLayerIfPossible, let presentationLayer = layer.presentationLayer() {
             // Position can be used as a center, because anchorPoint is (0.5, 0.5)
             return presentationLayer.position
         }
