@@ -3,7 +3,7 @@ Elastic pull to refresh compontent developed in Swift
 
 Inspired by this Dribbble post: [Pull Down to Refresh](https://dribbble.com/shots/2232385-Pull-Down-to-Refresh) by [Hoang Nguyen](https://dribbble.com/Hoanguyen)
 
-Tutorial on how this bounce effect was achieved can be found [here](http://iostuts.io/2015/10/17/elastic-bounce-using-uibezierpath-and-pan-gesture/).
+Tutorial on how this bounce effect was achieved can be found [here](https://medium.com/@gontovnik/elastic-view-animation-or-how-i-built-dgelasticpulltorefresh-269a3ba8636e#.9dioekqv6).
 
 ![](https://raw.githubusercontent.com/gontovnik/DGElasticPullToRefresh/master/DGElasticPullToRefreshPreview1.gif)
 ![](https://raw.githubusercontent.com/gontovnik/DGElasticPullToRefresh/master/DGElasticPullToRefreshPreview2.gif)
@@ -12,7 +12,7 @@ Tutorial on how this bounce effect was achieved can be found [here](http://iostu
 * Xcode 7 or higher
 * iOS 8.0 or higher (may work on previous versions, just did not test it)
 * ARC
-* Swift 2.0
+* Swift 3.0
 
 ## Demo
 
@@ -23,7 +23,7 @@ Open and run the DGElasticPullToRefreshExample project in Xcode to see DGElastic
 ### CocoaPods
 
 ``` ruby
-pod "DGElasticPullToRefresh"
+pod 'DGElasticPullToRefresh'
 ```
 
 ### Manual
@@ -38,17 +38,17 @@ let loadingView = DGElasticPullToRefreshLoadingViewCircle()
 loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
 tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
     // Add your logic here
-    // Do not forget to call dg_stopLoading() at the end 
+    // Do not forget to call dg_stopLoading() at the end
     self?.tableView.dg_stopLoading()
 }, loadingView: loadingView)
 tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
 tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
 ```
 
-Do not forget to remove pull to refresh on view controller deinit. It is a temporary solution. 
+Do not forget to remove pull to refresh on view controller deinit. It is a temporary solution.
 
 ``` swift
-deinit() {
+deinit {
     tableView.dg_removePullToRefresh()
 }
 ```
@@ -58,21 +58,21 @@ deinit() {
 Add pull to refresh without loading view:
 
 ``` swift
-func dg_addPullToRefreshWithActionHandler(actionHandler: () -> Void)
+func dg_addPullToRefreshWithActionHandler(_ actionHandler: @escaping () -> Void)
 ```
 
 Add pull to refresh with loading view:
 
 ``` swift
-func dg_addPullToRefreshWithActionHandler(actionHandler: () -> Void, loadingView: DGElasticPullToRefreshLoadingView?)
+func dg_addPullToRefreshWithActionHandler(_ actionHandler: @escaping () -> Void, loadingView: DGElasticPullToRefreshLoadingView?)
 ```
 
 You can use built-in *DGElasticPullToRefreshLoadingViewCircle* or create your own by subclassing **DGElasticPullToRefreshLoadingView** and implementing these methods:
 
 ``` swift
-func setPullProgress(progress: CGFloat) { }
-func startAnimating() { }
-func stopLoading() { }
+func setPullProgress(_ progress: CGFloat)
+func startAnimating()
+func stopLoading()
 ```
 
 Remove pull to refresh:
@@ -90,13 +90,13 @@ func dg_startLoading()
 Change pull to refresh background color:
 
 ``` swift
-func dg_setPullToRefreshBackgroundColor(color: UIColor)
+func dg_setPullToRefreshBackgroundColor(_ color: UIColor)
 ```
 
 Change pull to refresh fill color:
 
-``` swift 
-func dg_setPullToRefreshFillColor(color: UIColor)
+``` swift
+func dg_setPullToRefreshFillColor(_ color: UIColor)
 ```
 
 ## Contribution
@@ -111,7 +111,6 @@ Danil Gontovnik
 - https://twitter.com/gontovnik
 - http://gontovnik.com/
 - danil@gontovnik.com
-- http://iostuts.io/author/danil-gontovnik/
 
 ## License
 
