@@ -129,12 +129,21 @@ public extension UIScrollView {
     public func dg_stopLoading() {
         pullToRefreshView?.stopLoading()
     }
+    
+    func dg_stopScrollingAnimation() {
+//        if let superview = self.superview, let index = superview.subviews.indexOf({ $0 == self }) as Int! {
+//            removeFromSuperview()
+//            superview.insertSubview(self, atIndex: index)
+//        }
+    }
+    
 }
 
 // MARK: -
 // MARK: (UIView) Extension
 
 public extension UIView {
+
     func dg_center(_ usePresentationLayerIfPossible: Bool) -> CGPoint {
         if usePresentationLayerIfPossible, let presentationLayer = layer.presentation() {
             // Position can be used as a center, because anchorPoint is (0.5, 0.5)
