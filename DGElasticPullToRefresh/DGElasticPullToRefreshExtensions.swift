@@ -30,16 +30,16 @@ import ObjectiveC
 // MARK: -
 // MARK: (NSObject) Extension
 
-extension NSObject {
+public extension NSObject {
     
     // MARK: -
     // MARK: Vars
     
-    private struct dg_associatedKeys {
+    fileprivate struct dg_associatedKeys {
         static var observersArray = "observers"
     }
     
-    private var dg_observers: [[String : NSObject]] {
+    fileprivate var dg_observers: [[String : NSObject]] {
         get {
             if let observers = objc_getAssociatedObject(self, &dg_associatedKeys.observersArray) as? [[String : NSObject]] {
                 return observers
@@ -56,20 +56,20 @@ extension NSObject {
     // MARK: -
     // MARK: Methods
     
-    public func dg_addObserver(observer: NSObject, forKeyPath keyPath: String) {
+    public func dg_addObserver(_ observer: NSObject, forKeyPath keyPath: String) {
         let observerInfo = [keyPath : observer]
         
-        if dg_observers.indexOf({ $0 == observerInfo }) == nil {
+        if dg_observers.index(where: { $0 == observerInfo }) == nil {
             dg_observers.append(observerInfo)
-            addObserver(observer, forKeyPath: keyPath, options: .New, context: nil)
+            addObserver(observer, forKeyPath: keyPath, options: .new, context: nil)
         }
     }
     
-    public func dg_removeObserver(observer: NSObject, forKeyPath keyPath: String) {
+    public func dg_removeObserver(_ observer: NSObject, forKeyPath keyPath: String) {
         let observerInfo = [keyPath : observer]
         
-        if let index = dg_observers.indexOf({ $0 == observerInfo}) {
-            dg_observers.removeAtIndex(index)
+        if let index = dg_observers.index(where: { $0 == observerInfo}) {
+            dg_observers.remove(at: index)
             removeObserver(observer, forKeyPath: keyPath)
         }
     }
@@ -79,90 +79,64 @@ extension NSObject {
 // MARK: -
 // MARK: (UIScrollView) Extension
 
-extension UIScrollView {
+public extension UIScrollView {
     
-    // MARK: -
-    // MARK: Vars
-    
-    private struct dg_associatedKeys {
+    // MARK: - Vars
+
+    fileprivate struct dg_associatedKeys {
         static var pullToRefreshView = "pullToRefreshView"
     }
-    
-    private var _pullToRefreshView: DGElasticPullToRefreshView? {
+
+    fileprivate var pullToRefreshView: DGElasticPullToRefreshView? {
         get {
-            if let pullToRefreshView = objc_getAssociatedObject(self, &dg_associatedKeys.pullToRefreshView) as? DGElasticPullToRefreshView {
-                return pullToRefreshView
-            }
-            
-            return nil
+            return objc_getAssociatedObject(self, &dg_associatedKeys.pullToRefreshView) as? DGElasticPullToRefreshView
         }
+
         set {
             objc_setAssociatedObject(self, &dg_associatedKeys.pullToRefreshView, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
-    private var pullToRefreshView: DGElasticPullToRefreshView! {
-        get {
-            if let pullToRefreshView = _pullToRefreshView {
-                return pullToRefreshView
-            } else {
-                let pullToRefreshView = DGElasticPullToRefreshView()
-                _pullToRefreshView = pullToRefreshView
-                return pullToRefreshView
-            }
-        }
-    }
+    // MARK: - Methods (Public)
     
-    // MARK: -
-    // MARK: Methods (Public)
-    
-    func dg_addPullToRefreshWithActionHandler(actionHandler: () -> Void) {
-        dg_addPullToRefreshWithActionHandler(actionHandler, loadingView: nil)
-    }
-    
-    func dg_addPullToRefreshWithActionHandler(actionHandler: () -> Void, loadingView: DGElasticPullToRefreshLoadingView?) {
-        multipleTouchEnabled = false
+    public func dg_addPullToRefreshWithActionHandler(_ actionHandler: @escaping () -> Void, loadingView: DGElasticPullToRefreshLoadingView?) {
+        isMultipleTouchEnabled = false
         panGestureRecognizer.maximumNumberOfTouches = 1
-        
+
+        let pullToRefreshView = DGElasticPullToRefreshView()
+        self.pullToRefreshView = pullToRefreshView
         pullToRefreshView.actionHandler = actionHandler
         pullToRefreshView.loadingView = loadingView
         addSubview(pullToRefreshView)
-        
+
         pullToRefreshView.observing = true
     }
     
-    func dg_removePullToRefresh() {
-        pullToRefreshView.observing = false
-        pullToRefreshView.removeFromSuperview()
+    public func dg_removePullToRefresh() {
+        pullToRefreshView?.disassociateDisplayLink()
+        pullToRefreshView?.observing = false
+        pullToRefreshView?.removeFromSuperview()
     }
     
-    func dg_setPullToRefreshBackgroundColor(color: UIColor) {
-        pullToRefreshView.backgroundColor = color
+    public func dg_setPullToRefreshBackgroundColor(_ color: UIColor) {
+        pullToRefreshView?.backgroundColor = color
     }
     
-    func dg_setPullToRefreshFillColor(color: UIColor) {
-        pullToRefreshView.fillColor = color
+    public func dg_setPullToRefreshFillColor(_ color: UIColor) {
+        pullToRefreshView?.fillColor = color
     }
     
-    func dg_stopLoading() {
-        pullToRefreshView.stopLoading()
+    public func dg_stopLoading() {
+        pullToRefreshView?.stopLoading()
     }
-    
-    func dg_stopScrollingAnimation() {
-        if let superview = self.superview, let index = superview.subviews.indexOf({ $0 == self }) as Int! {
-            removeFromSuperview()
-            superview.insertSubview(self, atIndex: index)
-        }
-    }
-    
 }
 
 // MARK: -
 // MARK: (UIView) Extension
 
-extension UIView {
-    func dg_center(usePresentationLayerIfPossible: Bool) -> CGPoint {
-        if usePresentationLayerIfPossible, let presentationLayer = layer.presentationLayer() as? CALayer {
+public extension UIView {
+    func dg_center(_ usePresentationLayerIfPossible: Bool) -> CGPoint {
+        if usePresentationLayerIfPossible, let presentationLayer = layer.presentation() {
             // Position can be used as a center, because anchorPoint is (0.5, 0.5)
             return presentationLayer.position
         }
@@ -173,18 +147,18 @@ extension UIView {
 // MARK: -
 // MARK: (UIPanGestureRecognizer) Extension
 
-extension UIPanGestureRecognizer {
+public extension UIPanGestureRecognizer {
     func dg_resign() {
-        enabled = false
-        enabled = true
+        isEnabled = false
+        isEnabled = true
     }
 }
 
 // MARK: -
 // MARK: (UIGestureRecognizerState) Extension
 
-extension UIGestureRecognizerState {
-    func dg_isAnyOf(values: [UIGestureRecognizerState]) -> Bool {
-        return values.contains({ $0 == self })
+public extension UIGestureRecognizerState {
+    func dg_isAnyOf(_ values: [UIGestureRecognizerState]) -> Bool {
+        return values.contains(where: { $0 == self })
     }
 }

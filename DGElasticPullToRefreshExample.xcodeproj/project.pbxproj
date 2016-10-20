@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		05B92F8C1BD25E7B006D60FB /* DGElasticPullToRefreshConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F871BD25E7B006D60FB /* DGElasticPullToRefreshConstants.swift */; settings = {ASSET_TAGS = (); }; };
-		05B92F8D1BD25E7B006D60FB /* DGElasticPullToRefreshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F881BD25E7B006D60FB /* DGElasticPullToRefreshExtensions.swift */; settings = {ASSET_TAGS = (); }; };
-		05B92F8E1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F891BD25E7B006D60FB /* DGElasticPullToRefreshLoadingView.swift */; settings = {ASSET_TAGS = (); }; };
-		05B92F8F1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F8A1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingViewCircle.swift */; settings = {ASSET_TAGS = (); }; };
-		05B92F901BD25E7B006D60FB /* DGElasticPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F8B1BD25E7B006D60FB /* DGElasticPullToRefreshView.swift */; settings = {ASSET_TAGS = (); }; };
+		05B92F8C1BD25E7B006D60FB /* DGElasticPullToRefreshConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F871BD25E7B006D60FB /* DGElasticPullToRefreshConstants.swift */; };
+		05B92F8D1BD25E7B006D60FB /* DGElasticPullToRefreshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F881BD25E7B006D60FB /* DGElasticPullToRefreshExtensions.swift */; };
+		05B92F8E1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F891BD25E7B006D60FB /* DGElasticPullToRefreshLoadingView.swift */; };
+		05B92F8F1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F8A1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingViewCircle.swift */; };
+		05B92F901BD25E7B006D60FB /* DGElasticPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F8B1BD25E7B006D60FB /* DGElasticPullToRefreshView.swift */; };
 		05CD14691BBE8FEA00AF4030 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD14681BBE8FEA00AF4030 /* AppDelegate.swift */; };
 		05CD146B1BBE8FEA00AF4030 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD146A1BBE8FEA00AF4030 /* ViewController.swift */; };
 		05CD14701BBE8FEA00AF4030 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05CD146F1BBE8FEA00AF4030 /* Assets.xcassets */; };
 		05CD14731BBE8FEA00AF4030 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05CD14711BBE8FEA00AF4030 /* LaunchScreen.storyboard */; };
-		05FAB8BE1BBEF115004922F1 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FAB8BD1BBEF115004922F1 /* NavigationController.swift */; settings = {ASSET_TAGS = (); }; };
+		05FAB8BE1BBEF115004922F1 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FAB8BD1BBEF115004922F1 /* NavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +118,7 @@
 				TargetAttributes = {
 					05CD14641BBE8FEA00AF4030 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -217,7 +218,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -256,7 +257,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -269,9 +270,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DGElasticPullToRefreshExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gatafan.DGElasticPullToRefreshExample;
 				PRODUCT_NAME = DGElasticPullToRefreshExample;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -280,9 +283,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DGElasticPullToRefreshExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gatafan.DGElasticPullToRefreshExample;
 				PRODUCT_NAME = DGElasticPullToRefreshExample;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

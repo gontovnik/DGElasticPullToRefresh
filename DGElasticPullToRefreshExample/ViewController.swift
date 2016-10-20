@@ -13,22 +13,22 @@ class ViewController: UIViewController {
     // MARK: -
     // MARK: Vars
     
-    private var tableView: UITableView!
+    fileprivate var tableView: UITableView!
     
     // MARK: -
     
     override func loadView() {
         super.loadView()
         
-        navigationController?.navigationBar.translucent = false
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.barTintColor = UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0)
         
-        tableView = UITableView(frame: view.bounds, style: .Plain)
+        tableView = UITableView(frame: view.bounds, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableView.separatorColor = UIColor(red: 230/255.0, green: 230/255.0, blue: 231/255.0, alpha: 1.0)
         tableView.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 251/255.0, alpha: 1.0)
         view.addSubview(tableView)
@@ -36,12 +36,16 @@ class ViewController: UIViewController {
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(1.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {
                 self?.tableView.dg_stopLoading()
             })
         }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+    }
+    
+    deinit {
+        tableView.dg_removePullToRefresh()
     }
     
 }
@@ -51,25 +55,25 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource {
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 30
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "cellIdentifier"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
         
         if cell == nil {
-            cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+            cell = UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
             cell!.contentView.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 251/255.0, alpha: 1.0)
         }
         
         if let cell = cell {
-            cell.textLabel?.text = "\(indexPath.row)"
+            cell.textLabel?.text = "\((indexPath as NSIndexPath).row)"
             return cell
         }
         
@@ -83,8 +87,8 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

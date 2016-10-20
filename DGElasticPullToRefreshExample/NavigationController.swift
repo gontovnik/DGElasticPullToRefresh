@@ -11,9 +11,9 @@ import UIKit
 class NavigationController: UINavigationController {
     
     // MARK: -
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 
 }
