@@ -60,6 +60,10 @@ open class DGElasticPullToRefreshView: UIView {
             if previousValue == .dragging && newValue == .animatingBounce {
                 loadingView?.startAnimating()
                 animateBounce()
+            } else if previousValue == .stopped && newValue == .animatingBounce {
+                loadingView?.setPullProgress(1.0)
+                loadingView?.startAnimating()
+                animateBounce()
             } else if newValue == .loading && actionHandler != nil {
                 actionHandler()
             } else if newValue == .animatingToStopped {
@@ -212,6 +216,14 @@ open class DGElasticPullToRefreshView: UIView {
             return
         }
         state = .animatingToStopped
+    }
+    
+    func startLoading() {
+        if state != .stopped {
+            return
+        } else {
+            state = .animatingBounce
+        }
     }
     
     // MARK: Methods (Private)
