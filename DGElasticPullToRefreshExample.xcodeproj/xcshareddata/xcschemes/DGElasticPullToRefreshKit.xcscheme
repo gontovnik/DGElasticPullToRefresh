@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "05CD14641BBE8FEA00AF4030"
-               BuildableName = "DGElasticPullToRefreshExample.app"
-               BlueprintName = "DGElasticPullToRefreshExample"
+               BlueprintIdentifier = "4341EA6B1D25510000919935"
+               BuildableName = "DGElasticPullToRefreshKit.framework"
+               BlueprintName = "DGElasticPullToRefreshKit"
                ReferencedContainer = "container:DGElasticPullToRefreshExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "05CD14641BBE8FEA00AF4030"
-            BuildableName = "DGElasticPullToRefreshExample.app"
-            BlueprintName = "DGElasticPullToRefreshExample"
-            ReferencedContainer = "container:DGElasticPullToRefreshExample.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -51,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "05CD14641BBE8FEA00AF4030"
-            BuildableName = "DGElasticPullToRefreshExample.app"
-            BlueprintName = "DGElasticPullToRefreshExample"
+            BlueprintIdentifier = "4341EA6B1D25510000919935"
+            BuildableName = "DGElasticPullToRefreshKit.framework"
+            BlueprintName = "DGElasticPullToRefreshKit"
             ReferencedContainer = "container:DGElasticPullToRefreshExample.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -70,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "05CD14641BBE8FEA00AF4030"
-            BuildableName = "DGElasticPullToRefreshExample.app"
-            BlueprintName = "DGElasticPullToRefreshExample"
+            BlueprintIdentifier = "4341EA6B1D25510000919935"
+            BuildableName = "DGElasticPullToRefreshKit.framework"
+            BlueprintName = "DGElasticPullToRefreshKit"
             ReferencedContainer = "container:DGElasticPullToRefreshExample.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
