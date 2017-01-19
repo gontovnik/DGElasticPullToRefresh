@@ -198,8 +198,6 @@
 				TargetAttributes = {
 					05CD14641BBE8FEA00AF4030 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = S55BP53VB8;
-						DevelopmentTeamName = "Andrij KHarchishin";
 						LastSwiftMigration = 0800;
 					};
 					4341EA6B1D25510000919935 = {
@@ -400,7 +398,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gatafan.DGElasticPullToRefreshExample;
 				PRODUCT_NAME = DGElasticPullToRefreshExample;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

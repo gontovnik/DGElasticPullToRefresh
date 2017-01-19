@@ -38,20 +38,20 @@ enum DGElasticPullToRefreshState: Int {
     case animatingToStopped
     
     func isAnyOf(_ values: [DGElasticPullToRefreshState]) -> Bool {
-        return values.contains(self)
+        return values.contains(where: { $0 == self })
     }
 }
 
 // MARK: -
 // MARK: DGElasticPullToRefreshView
 
-public class DGElasticPullToRefreshView: UIView {
+open class DGElasticPullToRefreshView: UIView {
     
     // MARK: -
     // MARK: Vars
     
-    private var _state: DGElasticPullToRefreshState = .stopped
-    private(set) var state: DGElasticPullToRefreshState {
+    fileprivate var _state: DGElasticPullToRefreshState = .stopped
+    fileprivate(set) var state: DGElasticPullToRefreshState {
         get { return _state }
         set {
             let previousValue = state
@@ -70,10 +70,10 @@ public class DGElasticPullToRefreshView: UIView {
         }
     }
     
-    private var originalContentInsetTop: CGFloat = 0.0 { didSet { layoutSubviews() } }
-    private let shapeLayer = CAShapeLayer()
+    fileprivate var originalContentInsetTop: CGFloat = 0.0 { didSet { layoutSubviews() } }
+    fileprivate let shapeLayer = CAShapeLayer()
     
-    private var displayLink: CADisplayLink!
+    fileprivate var displayLink: CADisplayLink!
     
     var actionHandler: (() -> Void)!
     
@@ -107,15 +107,15 @@ public class DGElasticPullToRefreshView: UIView {
     
     // MARK: Views
     
-    private let bounceAnimationHelperView = UIView()
+    fileprivate let bounceAnimationHelperView = UIView()
     
-    private let cControlPointView = UIView()
-    private let l1ControlPointView = UIView()
-    private let l2ControlPointView = UIView()
-    private let l3ControlPointView = UIView()
-    private let r1ControlPointView = UIView()
-    private let r2ControlPointView = UIView()
-    private let r3ControlPointView = UIView()
+    fileprivate let cControlPointView = UIView()
+    fileprivate let l1ControlPointView = UIView()
+    fileprivate let l2ControlPointView = UIView()
+    fileprivate let l3ControlPointView = UIView()
+    fileprivate let r1ControlPointView = UIView()
+    fileprivate let r2ControlPointView = UIView()
+    fileprivate let r3ControlPointView = UIView()
     
     // MARK: -
     // MARK: Constructors
@@ -124,7 +124,7 @@ public class DGElasticPullToRefreshView: UIView {
         super.init(frame: CGRect.zero)
         
         displayLink = CADisplayLink(target: self, selector: #selector(DGElasticPullToRefreshView.displayLinkTick))
-        displayLink.add(to: RunLoop.main, forMode: RunLoopMode(rawValue: RunLoopMode.commonModes.rawValue))
+        displayLink.add(to: RunLoop.main, forMode: RunLoopMode.commonModes)
         displayLink.isPaused = true
         
         shapeLayer.backgroundColor = UIColor.clear.cgColor
@@ -164,10 +164,11 @@ public class DGElasticPullToRefreshView: UIView {
 
     // MARK: -
     // MARK: Observer
-    
-    override public func observeValue(forKeyPath keyPath: String?, of object: AnyObject?, change: [NSKeyValueChangeKey : AnyObject]?, context: UnsafeMutablePointer<Void>?) {
+
+    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == DGElasticPullToRefreshConstants.KeyPaths.ContentOffset {
-            if let newContentOffsetY = change?[NSKeyValueChangeKey.newKey]?.cgPointValue.y, let scrollView = scrollView() {
+            if let newContentOffset = change?[NSKeyValueChangeKey.newKey], let scrollView = scrollView() {
+                let newContentOffsetY = (newContentOffset as AnyObject).cgPointValue.y
                 if state.isAnyOf([.loading, .animatingToStopped]) && newContentOffsetY < -scrollView.contentInset.top {
                     scrollView.contentOffset.y = -scrollView.contentInset.top
                 } else {
@@ -176,18 +177,19 @@ public class DGElasticPullToRefreshView: UIView {
                 layoutSubviews()
             }
         } else if keyPath == DGElasticPullToRefreshConstants.KeyPaths.ContentInset {
-            if let newContentInsetTop = change?[NSKeyValueChangeKey.newKey]?.uiEdgeInsetsValue.top {
+            if let newContentInset = change?[NSKeyValueChangeKey.newKey] {
+                let newContentInsetTop = (newContentInset as AnyObject).uiEdgeInsetsValue.top
                 originalContentInsetTop = newContentInsetTop
             }
         } else if keyPath == DGElasticPullToRefreshConstants.KeyPaths.Frame {
             layoutSubviews()
         } else if keyPath == DGElasticPullToRefreshConstants.KeyPaths.PanGestureRecognizerState {
-            if let gestureState = scrollView()?.panGestureRecognizer.state , gestureState.dg_isAnyOf([.ended, .cancelled, .failed]) {
+            if let gestureState = scrollView()?.panGestureRecognizer.state, gestureState.dg_isAnyOf([.ended, .cancelled, .failed]) {
                 scrollViewDidChangeContentOffset(dragging: false)
             }
         }
     }
-    
+
     // MARK: -
     // MARK: Notifications
     
@@ -200,7 +202,7 @@ public class DGElasticPullToRefreshView: UIView {
     // MARK: -
     // MARK: Methods (Public)
     
-    private func scrollView() -> UIScrollView? {
+    fileprivate func scrollView() -> UIScrollView? {
         return superview as? UIScrollView
     }
     
@@ -214,25 +216,25 @@ public class DGElasticPullToRefreshView: UIView {
     
     // MARK: Methods (Private)
     
-    private func isAnimating() -> Bool {
+    fileprivate func isAnimating() -> Bool {
         return state.isAnyOf([.animatingBounce, .animatingToStopped])
     }
     
-    private func actualContentOffsetY() -> CGFloat {
+    fileprivate func actualContentOffsetY() -> CGFloat {
         guard let scrollView = scrollView() else { return 0.0 }
         return max(-scrollView.contentInset.top - scrollView.contentOffset.y, 0)
     }
     
-    private func currentHeight() -> CGFloat {
+    fileprivate func currentHeight() -> CGFloat {
         guard let scrollView = scrollView() else { return 0.0 }
         return max(-originalContentInsetTop - scrollView.contentOffset.y, 0)
     }
     
-    private func currentWaveHeight() -> CGFloat {
+    fileprivate func currentWaveHeight() -> CGFloat {
         return min(bounds.height / 3.0 * 1.6, DGElasticPullToRefreshConstants.WaveMaxHeight)
     }
     
-    private func currentPath() -> CGPath {
+    fileprivate func currentPath() -> CGPath {
         let width: CGFloat = scrollView()?.bounds.width ?? 0.0
         
         let bezierPath = UIBezierPath()
@@ -250,7 +252,7 @@ public class DGElasticPullToRefreshView: UIView {
         return bezierPath.cgPath
     }
     
-    private func scrollViewDidChangeContentOffset(dragging: Bool) {
+    fileprivate func scrollViewDidChangeContentOffset(dragging: Bool) {
         let offsetY = actualContentOffsetY()
         
         if state == .stopped && dragging {
@@ -267,7 +269,7 @@ public class DGElasticPullToRefreshView: UIView {
         }
     }
     
-    private func resetScrollViewContentInset(shouldAddObserverWhenFinished: Bool, animated: Bool, completion: (() -> ())?) {
+    fileprivate func resetScrollViewContentInset(shouldAddObserverWhenFinished: Bool, animated: Bool, completion: (() -> ())?) {
         guard let scrollView = scrollView() else { return }
         
         var contentInset = scrollView.contentInset
@@ -301,7 +303,7 @@ public class DGElasticPullToRefreshView: UIView {
         }
     }
     
-    private func animateBounce()
+    fileprivate func animateBounce()
     {
         guard let scrollView = scrollView() else { return }
         if (!self.observing) { return }
@@ -345,11 +347,11 @@ public class DGElasticPullToRefreshView: UIView {
     // MARK: -
     // MARK: CADisplayLink
     
-    private func startDisplayLink() {
+    fileprivate func startDisplayLink() {
         displayLink.isPaused = false
     }
     
-    private func stopDisplayLink() {
+    fileprivate func stopDisplayLink() {
         displayLink.isPaused = true
     }
     
@@ -379,7 +381,7 @@ public class DGElasticPullToRefreshView: UIView {
     // MARK: -
     // MARK: Layout
     
-    private func layoutLoadingView() {
+    fileprivate func layoutLoadingView() {
         let width = bounds.width
         let height: CGFloat = bounds.height
         
@@ -392,7 +394,7 @@ public class DGElasticPullToRefreshView: UIView {
         loadingView?.maskLayer.path = shapeLayer.path
     }
     
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         
         if let scrollView = scrollView() , state != .animatingBounce {

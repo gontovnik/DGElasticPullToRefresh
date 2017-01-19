@@ -26,7 +26,7 @@ SOFTWARE.
 
 import UIKit
 
-public class DGElasticPullToRefreshLoadingView: UIView {
+open class DGElasticPullToRefreshLoadingView: UIView {
     
     // MARK: -
     // MARK: Vars
@@ -58,15 +58,15 @@ public class DGElasticPullToRefreshLoadingView: UIView {
     // MARK: -
     // MARK: Methods
     
-    public func setPullProgress(_ progress: CGFloat) {
+    open func setPullProgress(_ progress: CGFloat) {
         
     }
     
-    public func startAnimating() {
+    open func startAnimating() {
         
     }
     
-    public func stopLoading() {
+    open func stopLoading() {
         
     }
 

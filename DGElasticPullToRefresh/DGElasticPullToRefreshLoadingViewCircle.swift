@@ -44,15 +44,15 @@ public extension CGFloat {
 // MARK: -
 // MARK: DGElasticPullToRefreshLoadingViewCircle
 
-public class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoadingView {
+open class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoadingView {
     
     // MARK: -
     // MARK: Vars
     
-    private let kRotationAnimation = "kRotationAnimation"
+    fileprivate let kRotationAnimation = "kRotationAnimation"
     
-    private let shapeLayer = CAShapeLayer()
-    private lazy var identityTransform: CATransform3D = {
+    fileprivate let shapeLayer = CAShapeLayer()
+    fileprivate lazy var identityTransform: CATransform3D = {
         var transform = CATransform3DIdentity
         transform.m34 = CGFloat(1.0 / -500.0)
         transform = CATransform3DRotate(transform, CGFloat(-90.0).toRadians(), 0.0, 0.0, 1.0)
@@ -80,7 +80,7 @@ public class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoad
     // MARK: -
     // MARK: Methods
     
-    override public func setPullProgress(_ progress: CGFloat) {
+    override open func setPullProgress(_ progress: CGFloat) {
         super.setPullProgress(progress)
         
         shapeLayer.strokeEnd = min(0.9 * progress, 0.9)
@@ -93,7 +93,7 @@ public class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoad
         }
     }
     
-    override public func startAnimating() {
+    override open func startAnimating() {
         super.startAnimating()
         
         if shapeLayer.animation(forKey: kRotationAnimation) != nil { return }
@@ -107,17 +107,17 @@ public class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoad
         shapeLayer.add(rotationAnimation, forKey: kRotationAnimation)
     }
     
-    override public func stopLoading() {
+    override open func stopLoading() {
         super.stopLoading()
         
         shapeLayer.removeAnimation(forKey: kRotationAnimation)
     }
     
-    private func currentDegree() -> CGFloat {
+    fileprivate func currentDegree() -> CGFloat {
         return shapeLayer.value(forKeyPath: "transform.rotation.z") as! CGFloat
     }
     
-    override public func tintColorDidChange() {
+    override open func tintColorDidChange() {
         super.tintColorDidChange()
         
         shapeLayer.strokeColor = tintColor.cgColor
@@ -126,7 +126,7 @@ public class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoad
     // MARK: -
     // MARK: Layout
     
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         
         shapeLayer.frame = bounds

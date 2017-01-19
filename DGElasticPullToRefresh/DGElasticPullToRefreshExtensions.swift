@@ -35,11 +35,11 @@ public extension NSObject {
     // MARK: -
     // MARK: Vars
     
-    private struct dg_associatedKeys {
+    fileprivate struct dg_associatedKeys {
         static var observersArray = "observers"
     }
     
-    private var dg_observers: [[String : NSObject]] {
+    fileprivate var dg_observers: [[String : NSObject]] {
         get {
             if let observers = objc_getAssociatedObject(self, &dg_associatedKeys.observersArray) as? [[String : NSObject]] {
                 return observers
@@ -83,11 +83,11 @@ public extension UIScrollView {
     
     // MARK: - Vars
 
-    private struct dg_associatedKeys {
+    fileprivate struct dg_associatedKeys {
         static var pullToRefreshView = "pullToRefreshView"
     }
 
-    private var pullToRefreshView: DGElasticPullToRefreshView? {
+    fileprivate var pullToRefreshView: DGElasticPullToRefreshView? {
         get {
             return objc_getAssociatedObject(self, &dg_associatedKeys.pullToRefreshView) as? DGElasticPullToRefreshView
         }
@@ -99,7 +99,7 @@ public extension UIScrollView {
     
     // MARK: - Methods (Public)
     
-    public func dg_addPullToRefreshWithActionHandler(_ actionHandler: () -> Void, loadingView: DGElasticPullToRefreshLoadingView?) {
+    public func dg_addPullToRefreshWithActionHandler(_ actionHandler: @escaping () -> Void, loadingView: DGElasticPullToRefreshLoadingView?) {
         isMultipleTouchEnabled = false
         panGestureRecognizer.maximumNumberOfTouches = 1
 
@@ -159,6 +159,6 @@ public extension UIPanGestureRecognizer {
 
 public extension UIGestureRecognizerState {
     func dg_isAnyOf(_ values: [UIGestureRecognizerState]) -> Bool {
-        return values.contains(self)
+        return values.contains(where: { $0 == self })
     }
 }
