@@ -50,6 +50,7 @@ open class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoadin
     // MARK: Vars
     
     fileprivate let kRotationAnimation = "kRotationAnimation"
+    public var refreshing:Bool! = false
     
     fileprivate let shapeLayer = CAShapeLayer()
     fileprivate lazy var identityTransform: CATransform3D = {
@@ -98,6 +99,7 @@ open class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoadin
         
         if shapeLayer.animation(forKey: kRotationAnimation) != nil { return }
         
+        refreshing = true
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotationAnimation.toValue = CGFloat(2 * M_PI) + currentDegree()
         rotationAnimation.duration = 1.0
@@ -110,6 +112,7 @@ open class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoadin
     override open func stopLoading() {
         super.stopLoading()
         
+        refreshing = false
         shapeLayer.removeAnimation(forKey: kRotationAnimation)
     }
     
