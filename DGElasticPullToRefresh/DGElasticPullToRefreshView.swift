@@ -45,6 +45,29 @@ enum DGElasticPullToRefreshState: Int {
 // MARK: -
 // MARK: DGElasticPullToRefreshView
 
+private struct __Key_ { static var impactGenerator = "impactGenerator" }
+@available(iOS 10.0, *)
+extension DGElasticPullToRefreshView {
+    
+    private var impactGenerator: UIImpactFeedbackGenerator {
+        var impact: UIImpactFeedbackGenerator! = objc_getAssociatedObject(self, &__Key_.impactGenerator) as? UIImpactFeedbackGenerator
+        if impact == nil {
+            impact = UIImpactFeedbackGenerator(style: UIImpactFeedbackStyle.light)
+            objc_setAssociatedObject(self, &__Key_.impactGenerator, impact, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        return impact
+    }
+    
+    @available(iOS 10.0, *)
+    func handleStateChange() {
+        switch _state {
+        case .dragging: impactGenerator.prepare()
+        case .animatingBounce: impactGenerator.impactOccurred()
+        default: break
+        }
+    }
+}
+
 open class DGElasticPullToRefreshView: UIView {
     
     // MARK: -
@@ -56,6 +79,9 @@ open class DGElasticPullToRefreshView: UIView {
         set {
             let previousValue = state
             _state = newValue
+            if #available(iOS 10.0, *) {
+                handleStateChange()
+            }
             
             if previousValue == .dragging && newValue == .animatingBounce {
                 loadingView?.startAnimating()
