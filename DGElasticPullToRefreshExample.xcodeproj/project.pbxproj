@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		05B92F8C1BD25E7B006D60FB /* DGElasticPullToRefreshConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F871BD25E7B006D60FB /* DGElasticPullToRefreshConstants.swift */; };
-		05B92F8D1BD25E7B006D60FB /* DGElasticPullToRefreshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F881BD25E7B006D60FB /* DGElasticPullToRefreshExtensions.swift */; };
-		05B92F8E1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F891BD25E7B006D60FB /* DGElasticPullToRefreshLoadingView.swift */; };
-		05B92F8F1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F8A1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingViewCircle.swift */; };
-		05B92F901BD25E7B006D60FB /* DGElasticPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F8B1BD25E7B006D60FB /* DGElasticPullToRefreshView.swift */; };
 		05CD14691BBE8FEA00AF4030 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD14681BBE8FEA00AF4030 /* AppDelegate.swift */; };
 		05CD146B1BBE8FEA00AF4030 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD146A1BBE8FEA00AF4030 /* ViewController.swift */; };
 		05CD14701BBE8FEA00AF4030 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05CD146F1BBE8FEA00AF4030 /* Assets.xcassets */; };
@@ -26,6 +21,11 @@
 		AD52681D1E6CA32000A27F84 /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5268171E6CA32000A27F84 /* DGElasticPullToRefreshLoadingViewCircle.swift */; };
 		AD52681E1E6CA32000A27F84 /* DGElasticPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5268181E6CA32000A27F84 /* DGElasticPullToRefreshView.swift */; };
 		AD52681F1E6CA32000A27F84 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD5268191E6CA32000A27F84 /* Info.plist */; };
+		AD5268201E6CA4E900A27F84 /* DGElasticPullToRefreshConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F871BD25E7B006D60FB /* DGElasticPullToRefreshConstants.swift */; };
+		AD5268211E6CA4E900A27F84 /* DGElasticPullToRefreshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F881BD25E7B006D60FB /* DGElasticPullToRefreshExtensions.swift */; };
+		AD5268221E6CA4E900A27F84 /* DGElasticPullToRefreshLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F891BD25E7B006D60FB /* DGElasticPullToRefreshLoadingView.swift */; };
+		AD5268231E6CA4E900A27F84 /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F8A1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingViewCircle.swift */; };
+		AD5268241E6CA4E900A27F84 /* DGElasticPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B92F8B1BD25E7B006D60FB /* DGElasticPullToRefreshView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,7 +213,7 @@
 		05CD145D1BBE8FEA00AF4030 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Danil Gontovnik";
 				TargetAttributes = {
 					05CD14641BBE8FEA00AF4030 = {
@@ -270,16 +270,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05B92F8C1BD25E7B006D60FB /* DGElasticPullToRefreshConstants.swift in Sources */,
 				05CD146B1BBE8FEA00AF4030 /* ViewController.swift in Sources */,
-				05B92F901BD25E7B006D60FB /* DGElasticPullToRefreshView.swift in Sources */,
-				05B92F8E1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingView.swift in Sources */,
 				AD52681B1E6CA32000A27F84 /* DGElasticPullToRefreshExtensions.swift in Sources */,
 				AD52681E1E6CA32000A27F84 /* DGElasticPullToRefreshView.swift in Sources */,
 				05FAB8BE1BBEF115004922F1 /* NavigationController.swift in Sources */,
-				05B92F8F1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
 				05CD14691BBE8FEA00AF4030 /* AppDelegate.swift in Sources */,
-				05B92F8D1BD25E7B006D60FB /* DGElasticPullToRefreshExtensions.swift in Sources */,
 				AD52681A1E6CA32000A27F84 /* DGElasticPullToRefreshConstants.swift in Sources */,
 				AD52681D1E6CA32000A27F84 /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
 				AD52681C1E6CA32000A27F84 /* DGElasticPullToRefreshLoadingView.swift in Sources */,
@@ -290,6 +285,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD5268241E6CA4E900A27F84 /* DGElasticPullToRefreshView.swift in Sources */,
+				AD5268211E6CA4E900A27F84 /* DGElasticPullToRefreshExtensions.swift in Sources */,
+				AD5268201E6CA4E900A27F84 /* DGElasticPullToRefreshConstants.swift in Sources */,
+				AD5268231E6CA4E900A27F84 /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
+				AD5268221E6CA4E900A27F84 /* DGElasticPullToRefreshLoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,8 +328,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -373,8 +375,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -393,6 +397,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -401,6 +406,7 @@
 		05CD14781BBE8FEA00AF4030 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DGElasticPullToRefreshExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -414,6 +420,7 @@
 		05CD14791BBE8FEA00AF4030 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DGElasticPullToRefreshExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
