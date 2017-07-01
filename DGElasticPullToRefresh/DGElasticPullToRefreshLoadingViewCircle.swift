@@ -99,7 +99,7 @@ open class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoadin
         if shapeLayer.animation(forKey: kRotationAnimation) != nil { return }
         
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-        rotationAnimation.toValue = CGFloat(2 * M_PI) + currentDegree()
+        rotationAnimation.toValue = CGFloat.pi*2 + currentDegree()
         rotationAnimation.duration = 1.0
         rotationAnimation.repeatCount = Float.infinity
         rotationAnimation.isRemovedOnCompletion = false
