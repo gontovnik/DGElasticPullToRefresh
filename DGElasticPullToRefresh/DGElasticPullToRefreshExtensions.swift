@@ -157,8 +157,8 @@ public extension UIPanGestureRecognizer {
 // MARK: -
 // MARK: (UIGestureRecognizerState) Extension
 
-public extension UIGestureRecognizerState {
-    func dg_isAnyOf(_ values: [UIGestureRecognizerState]) -> Bool {
+public extension UIGestureRecognizer.State {
+    func dg_isAnyOf(_ values: [UIGestureRecognizer.State]) -> Bool {
         return values.contains(where: { $0 == self })
     }
 }
