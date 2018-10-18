@@ -126,6 +126,11 @@ public extension UIScrollView {
         pullToRefreshView?.fillColor = color
     }
     
+    // The default on this is `true`-- which is the original behavior of this Cocoapod. I think that's a bug though. It results in a strange interaction with table views when they have an initial section header.
+    public func dg_setPullToRefreshSnapToTopOnInitialAnimatingBounce(snap: Bool = true) {
+        pullToRefreshView?.snapToTopOnInitialAnimatingBounce = snap
+    }
+    
     public func dg_stopLoading() {
         pullToRefreshView?.stopLoading()
     }
