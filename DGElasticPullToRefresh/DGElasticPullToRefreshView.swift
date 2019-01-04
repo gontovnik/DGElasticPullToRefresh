@@ -50,6 +50,21 @@ open class DGElasticPullToRefreshView: UIView {
     // MARK: -
     // MARK: Vars
     
+    var snapToTopOnInitialAnimatingBounce: Bool = true
+    
+    fileprivate var _justTransitionedToAnimatingBounce: Bool = false
+    fileprivate var justTransitionedToAnimatingBounce: Bool {
+        set {
+            _justTransitionedToAnimatingBounce = newValue
+        }
+        
+        get {
+            let result = _justTransitionedToAnimatingBounce
+            _justTransitionedToAnimatingBounce = false
+            return result
+        }
+    }
+    
     fileprivate var _state: DGElasticPullToRefreshState = .stopped
     fileprivate(set) var state: DGElasticPullToRefreshState {
         get { return _state }
@@ -124,7 +139,7 @@ open class DGElasticPullToRefreshView: UIView {
         super.init(frame: CGRect.zero)
         
         displayLink = CADisplayLink(target: self, selector: #selector(DGElasticPullToRefreshView.displayLinkTick))
-        displayLink.add(to: RunLoop.main, forMode: RunLoopMode.commonModes)
+        displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
         displayLink.isPaused = true
         
         shapeLayer.backgroundColor = UIColor.clear.cgColor
@@ -141,7 +156,7 @@ open class DGElasticPullToRefreshView: UIView {
         addSubview(r2ControlPointView)
         addSubview(r3ControlPointView)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(DGElasticPullToRefreshView.applicationWillEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DGElasticPullToRefreshView.applicationWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -193,7 +208,7 @@ open class DGElasticPullToRefreshView: UIView {
     // MARK: -
     // MARK: Notifications
     
-    func applicationWillEnterForeground() {
+    @objc func applicationWillEnterForeground() {
         if state == .loading {
             layoutSubviews()
         }
@@ -260,6 +275,7 @@ open class DGElasticPullToRefreshView: UIView {
         } else if state == .dragging && dragging == false {
             if offsetY >= DGElasticPullToRefreshConstants.MinOffsetToPull {
                 state = .animatingBounce
+                justTransitionedToAnimatingBounce = true
             } else {
                 state = .stopped
             }
@@ -355,14 +371,17 @@ open class DGElasticPullToRefreshView: UIView {
         displayLink.isPaused = true
     }
     
-    func displayLinkTick() {
+    @objc func displayLinkTick() {
         let width = bounds.width
         var height: CGFloat = 0.0
         
         if state == .animatingBounce {
             guard let scrollView = scrollView() else { return }
         
-            scrollView.contentInset.top = bounceAnimationHelperView.dg_center(isAnimating()).y
+            if !justTransitionedToAnimatingBounce || snapToTopOnInitialAnimatingBounce {
+                scrollView.contentInset.top = bounceAnimationHelperView.dg_center(isAnimating()).y
+            }
+
             scrollView.contentOffset.y = -scrollView.contentInset.top
             
             height = scrollView.contentInset.top - originalContentInsetTop
