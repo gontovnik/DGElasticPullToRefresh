@@ -26,7 +26,7 @@
 
 import UIKit
 
-// MARK: -
+// MARK: - Swift 5 updates.
 // MARK: DGElasticPullToRefreshState
 
 public
