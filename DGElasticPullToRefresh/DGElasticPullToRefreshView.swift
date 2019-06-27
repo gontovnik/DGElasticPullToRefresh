@@ -370,7 +370,7 @@ open class DGElasticPullToRefreshView: UIView {
             
             height = scrollView.contentInset.top - originalContentInsetTop
             
-            frame = CGRect(x: 0.0, y: -height - 1.0, width: width, height: height)
+            frame = CGRect(x: 0.0, y: -height, width: width, height: height)
         } else if state == .animatingToStopped {
             height = actualContentOffsetY()
         }
