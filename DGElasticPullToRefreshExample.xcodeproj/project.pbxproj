@@ -118,6 +118,7 @@
 				TargetAttributes = {
 					05CD14641BBE8FEA00AF4030 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 5HT442372Z;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -127,6 +128,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -269,12 +271,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5HT442372Z;
 				INFOPLIST_FILE = DGElasticPullToRefreshExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gatafan.DGElasticPullToRefreshExample;
 				PRODUCT_NAME = DGElasticPullToRefreshExample;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -282,12 +285,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5HT442372Z;
 				INFOPLIST_FILE = DGElasticPullToRefreshExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gatafan.DGElasticPullToRefreshExample;
 				PRODUCT_NAME = DGElasticPullToRefreshExample;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
