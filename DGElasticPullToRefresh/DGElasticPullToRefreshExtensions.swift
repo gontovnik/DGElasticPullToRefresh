@@ -99,7 +99,7 @@ public extension UIScrollView {
     
     // MARK: - Methods (Public)
     
-    public func dg_addPullToRefreshWithActionHandler(_ actionHandler: @escaping () -> Void, loadingView: DGElasticPullToRefreshLoadingView?) {
+    func dg_addPullToRefreshWithActionHandler(_ actionHandler: @escaping () -> Void, loadingView: DGElasticPullToRefreshLoadingView?) {
         isMultipleTouchEnabled = false
         panGestureRecognizer.maximumNumberOfTouches = 1
 
@@ -112,21 +112,21 @@ public extension UIScrollView {
         pullToRefreshView.observing = true
     }
     
-    public func dg_removePullToRefresh() {
+    func dg_removePullToRefresh() {
         pullToRefreshView?.disassociateDisplayLink()
         pullToRefreshView?.observing = false
         pullToRefreshView?.removeFromSuperview()
     }
     
-    public func dg_setPullToRefreshBackgroundColor(_ color: UIColor) {
+    func dg_setPullToRefreshBackgroundColor(_ color: UIColor) {
         pullToRefreshView?.backgroundColor = color
     }
     
-    public func dg_setPullToRefreshFillColor(_ color: UIColor) {
+    func dg_setPullToRefreshFillColor(_ color: UIColor) {
         pullToRefreshView?.fillColor = color
     }
     
-    public func dg_stopLoading() {
+    func dg_stopLoading() {
         pullToRefreshView?.stopLoading()
     }
 }
@@ -157,8 +157,8 @@ public extension UIPanGestureRecognizer {
 // MARK: -
 // MARK: (UIGestureRecognizerState) Extension
 
-public extension UIGestureRecognizerState {
-    func dg_isAnyOf(_ values: [UIGestureRecognizerState]) -> Bool {
+public extension UIGestureRecognizer.State {
+    func dg_isAnyOf(_ values: [UIGestureRecognizer.State]) -> Bool {
         return values.contains(where: { $0 == self })
     }
 }
