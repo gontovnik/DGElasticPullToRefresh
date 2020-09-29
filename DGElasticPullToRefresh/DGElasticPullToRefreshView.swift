@@ -124,7 +124,7 @@ public class DGElasticPullToRefreshView: UIView {
         super.init(frame: CGRect.zero)
         
         displayLink = CADisplayLink(target: self, selector: Selector("displayLinkTick"))
-        displayLink.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
+        displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
         displayLink.paused = true
         
         shapeLayer.backgroundColor = UIColor.clearColor().CGColor
@@ -141,7 +141,7 @@ public class DGElasticPullToRefreshView: UIView {
         addSubview(r2ControlPointView)
         addSubview(r3ControlPointView)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("applicationWillEnterForeground"), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DGElasticPullToRefreshView.applicationWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -175,8 +175,10 @@ public class DGElasticPullToRefreshView: UIView {
         } else if keyPath == DGElasticPullToRefreshConstants.KeyPaths.Frame {
             layoutSubviews()
         } else if keyPath == DGElasticPullToRefreshConstants.KeyPaths.PanGestureRecognizerState {
-            if let gestureState = scrollView()?.panGestureRecognizer.state where gestureState.dg_isAnyOf([.Ended, .Cancelled, .Failed]) {
-                scrollViewDidChangeContentOffset(dragging: false)
+            if let gestureState = scrollView()?.panGestureRecognizer.state {
+                if gestureState == .ended || gestureState == .cancelled || gestureState == .failed {
+                    scrollViewDidChangeContentOffset(dragging: false)
+                }
             }
         }
     }
@@ -184,7 +186,7 @@ public class DGElasticPullToRefreshView: UIView {
     // MARK: -
     // MARK: Notifications
     
-    func applicationWillEnterForeground() {
+    @objc func applicationWillEnterForeground() {
         if state == .Loading {
             layoutSubviews()
         }
@@ -336,7 +338,7 @@ public class DGElasticPullToRefreshView: UIView {
         displayLink.paused = true
     }
     
-    func displayLinkTick() {
+    @objc func displayLinkTick() {
         let width = bounds.width
         var height: CGFloat = 0.0
         
