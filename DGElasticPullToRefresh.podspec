@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
                         :tag => '1.1' }
   spec.license      = { :type => "MIT", :file => "LICENSE" }
   spec.platform     = :ios, '8.0'
-  spec.source_files = "DGElasticPullToRefresh/*.swift"
+  spec.source_files = "Sources/DGElasticPullToRefresh/*.swift"
 
   spec.requires_arc = true
 
