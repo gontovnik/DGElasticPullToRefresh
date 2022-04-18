@@ -54,7 +54,8 @@
 				05B92F8A1BD25E7B006D60FB /* DGElasticPullToRefreshLoadingViewCircle.swift */,
 				05B92F8B1BD25E7B006D60FB /* DGElasticPullToRefreshView.swift */,
 			);
-			path = DGElasticPullToRefresh;
+			name = DGElasticPullToRefresh;
+			path = DGElasticPullToRefreshExample/Sources/DGElasticPullToRefresh;
 			sourceTree = SOURCE_ROOT;
 		};
 		05CD145C1BBE8FEA00AF4030 = {
@@ -76,7 +77,7 @@
 		05CD14671BBE8FEA00AF4030 /* DGElasticPullToRefreshExample */ = {
 			isa = PBXGroup;
 			children = (
-				05B92F861BD25E7B006D60FB /* DGElasticPullToRefresh */,
+				D75A2545280DD02E003AEF19 /* Sources */,
 				05CD14681BBE8FEA00AF4030 /* AppDelegate.swift */,
 				05CD146A1BBE8FEA00AF4030 /* ViewController.swift */,
 				05FAB8BD1BBEF115004922F1 /* NavigationController.swift */,
@@ -85,6 +86,14 @@
 				05CD14741BBE8FEA00AF4030 /* Info.plist */,
 			);
 			path = DGElasticPullToRefreshExample;
+			sourceTree = "<group>";
+		};
+		D75A2545280DD02E003AEF19 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				05B92F861BD25E7B006D60FB /* DGElasticPullToRefresh */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
