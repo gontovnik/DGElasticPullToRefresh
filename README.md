@@ -103,15 +103,6 @@ func dg_setPullToRefreshFillColor(_ color: UIColor)
 
 Please feel free to submit pull requests. Cannot wait to see your custom loading views for this pull to refresh.
 
-## Contact
-
-Danil Gontovnik
-
-- https://github.com/gontovnik
-- https://twitter.com/gontovnik
-- http://gontovnik.com/
-- danil@gontovnik.com
-
 ## License
 
 The MIT License (MIT)
