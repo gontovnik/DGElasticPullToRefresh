@@ -1,4 +1,4 @@
-# DGElasticPullToRefresh
+# PSElasticPullToRefresh
 Elastic pull to refresh compontent developed in Swift
 
 Inspired by this Dribbble post: [Pull Down to Refresh](https://dribbble.com/shots/2232385-Pull-Down-to-Refresh) by [Hoang Nguyen](https://dribbble.com/Hoanguyen)
