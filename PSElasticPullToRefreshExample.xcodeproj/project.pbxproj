@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		05CD14651BBE8FEA00AF4030 /* DGElasticPullToRefreshExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DGElasticPullToRefreshExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		05CD14651BBE8FEA00AF4030 /* PSElasticPullToRefreshExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PSElasticPullToRefreshExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05CD14681BBE8FEA00AF4030 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05CD146A1BBE8FEA00AF4030 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		05CD146F1BBE8FEA00AF4030 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		05CD145C1BBE8FEA00AF4030 = {
 			isa = PBXGroup;
 			children = (
-				05CD14671BBE8FEA00AF4030 /* DGElasticPullToRefreshExample */,
+				05CD14671BBE8FEA00AF4030 /* PSElasticPullToRefreshExample */,
 				05CD14661BBE8FEA00AF4030 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,15 +56,15 @@
 		05CD14661BBE8FEA00AF4030 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				05CD14651BBE8FEA00AF4030 /* DGElasticPullToRefreshExample.app */,
+				05CD14651BBE8FEA00AF4030 /* PSElasticPullToRefreshExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		05CD14671BBE8FEA00AF4030 /* DGElasticPullToRefreshExample */ = {
+		05CD14671BBE8FEA00AF4030 /* PSElasticPullToRefreshExample */ = {
 			isa = PBXGroup;
 			children = (
-				CF3B5FEF25588D9F00B1D7F6 /* DGElasticPullToRefresh */,
+				CF3B5FEF25588D9F00B1D7F6 /* PSElasticPullToRefresh */,
 				05CD14681BBE8FEA00AF4030 /* AppDelegate.swift */,
 				05CD146A1BBE8FEA00AF4030 /* ViewController.swift */,
 				05FAB8BD1BBEF115004922F1 /* NavigationController.swift */,
@@ -72,10 +72,10 @@
 				05CD14711BBE8FEA00AF4030 /* LaunchScreen.storyboard */,
 				05CD14741BBE8FEA00AF4030 /* Info.plist */,
 			);
-			path = DGElasticPullToRefreshExample;
+			path = PSElasticPullToRefreshExample;
 			sourceTree = "<group>";
 		};
-		CF3B5FEF25588D9F00B1D7F6 /* DGElasticPullToRefresh */ = {
+		CF3B5FEF25588D9F00B1D7F6 /* PSElasticPullToRefresh */ = {
 			isa = PBXGroup;
 			children = (
 				CF3B5FF025588D9F00B1D7F6 /* DGElasticPullToRefreshLoadingViewCircle.swift */,
@@ -84,16 +84,16 @@
 				CF3B5FF325588D9F00B1D7F6 /* DGElasticPullToRefreshExtensions.swift */,
 				CF3B5FF425588D9F00B1D7F6 /* DGElasticPullToRefreshLoadingView.swift */,
 			);
-			name = DGElasticPullToRefresh;
-			path = Sources/DGElasticPullToRefresh;
+			name = PSElasticPullToRefresh;
+			path = Sources/PSElasticPullToRefresh;
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		05CD14641BBE8FEA00AF4030 /* DGElasticPullToRefreshExample */ = {
+		05CD14641BBE8FEA00AF4030 /* PSElasticPullToRefreshExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 05CD14771BBE8FEA00AF4030 /* Build configuration list for PBXNativeTarget "DGElasticPullToRefreshExample" */;
+			buildConfigurationList = 05CD14771BBE8FEA00AF4030 /* Build configuration list for PBXNativeTarget "PSElasticPullToRefreshExample" */;
 			buildPhases = (
 				05CD14611BBE8FEA00AF4030 /* Sources */,
 				05CD14621BBE8FEA00AF4030 /* Frameworks */,
@@ -103,9 +103,9 @@
 			);
 			dependencies = (
 			);
-			name = DGElasticPullToRefreshExample;
+			name = PSElasticPullToRefreshExample;
 			productName = DGElasticPullToRefreshExample;
-			productReference = 05CD14651BBE8FEA00AF4030 /* DGElasticPullToRefreshExample.app */;
+			productReference = 05CD14651BBE8FEA00AF4030 /* PSElasticPullToRefreshExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -123,7 +123,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 05CD14601BBE8FEA00AF4030 /* Build configuration list for PBXProject "DGElasticPullToRefreshExample" */;
+			buildConfigurationList = 05CD14601BBE8FEA00AF4030 /* Build configuration list for PBXProject "PSElasticPullToRefreshExample" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -136,7 +136,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				05CD14641BBE8FEA00AF4030 /* DGElasticPullToRefreshExample */,
+				05CD14641BBE8FEA00AF4030 /* PSElasticPullToRefreshExample */,
 			);
 		};
 /* End PBXProject section */
@@ -295,11 +295,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = DGElasticPullToRefreshExample/Info.plist;
+				INFOPLIST_FILE = PSElasticPullToRefreshExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gatafan.DGElasticPullToRefreshExample;
-				PRODUCT_NAME = DGElasticPullToRefreshExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.PSElasticPullToRefresh;
+				PRODUCT_NAME = PSElasticPullToRefreshExample;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 5.0;
 			};
@@ -309,11 +309,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = DGElasticPullToRefreshExample/Info.plist;
+				INFOPLIST_FILE = PSElasticPullToRefreshExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gatafan.DGElasticPullToRefreshExample;
-				PRODUCT_NAME = DGElasticPullToRefreshExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.parhelionsoftware.PSElasticPullToRefresh;
+				PRODUCT_NAME = PSElasticPullToRefreshExample;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 5.0;
 			};
@@ -322,7 +322,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		05CD14601BBE8FEA00AF4030 /* Build configuration list for PBXProject "DGElasticPullToRefreshExample" */ = {
+		05CD14601BBE8FEA00AF4030 /* Build configuration list for PBXProject "PSElasticPullToRefreshExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				05CD14751BBE8FEA00AF4030 /* Debug */,
@@ -331,7 +331,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		05CD14771BBE8FEA00AF4030 /* Build configuration list for PBXNativeTarget "DGElasticPullToRefreshExample" */ = {
+		05CD14771BBE8FEA00AF4030 /* Build configuration list for PBXNativeTarget "PSElasticPullToRefreshExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				05CD14781BBE8FEA00AF4030 /* Debug */,
