@@ -124,7 +124,7 @@ open class DGElasticPullToRefreshView: UIView {
         super.init(frame: CGRect.zero)
         
         displayLink = CADisplayLink(target: self, selector: #selector(DGElasticPullToRefreshView.displayLinkTick))
-        displayLink.add(to: RunLoop.main, forMode: .common)
+        displayLink.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
         displayLink.isPaused = true
         
         shapeLayer.backgroundColor = UIColor.clear.cgColor

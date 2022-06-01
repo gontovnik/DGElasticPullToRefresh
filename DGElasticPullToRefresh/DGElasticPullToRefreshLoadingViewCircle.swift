@@ -32,11 +32,11 @@ import UIKit
 public extension CGFloat {
     
     func toRadians() -> CGFloat {
-        return (self * .pi) / 180.0
+        return (self * CGFloat.pi) / 180.0
     }
     
     func toDegrees() -> CGFloat {
-        return self * 180.0 / .pi
+        return self * 180.0 / CGFloat.pi
     }
     
 }
@@ -99,7 +99,7 @@ open class DGElasticPullToRefreshLoadingViewCircle: DGElasticPullToRefreshLoadin
         if shapeLayer.animation(forKey: kRotationAnimation) != nil { return }
         
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-        rotationAnimation.toValue = 2 * .pi + currentDegree()
+        rotationAnimation.toValue = CGFloat(2 * CGFloat.pi) + currentDegree()
         rotationAnimation.duration = 1.0
         rotationAnimation.repeatCount = Float.infinity
         rotationAnimation.isRemovedOnCompletion = false

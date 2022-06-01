@@ -1,4 +1,4 @@
-# PSElasticPullToRefresh
+# DGElasticPullToRefresh
 Elastic pull to refresh compontent developed in Swift
 
 Inspired by this Dribbble post: [Pull Down to Refresh](https://dribbble.com/shots/2232385-Pull-Down-to-Refresh) by [Hoang Nguyen](https://dribbble.com/Hoanguyen)
@@ -102,6 +102,15 @@ func dg_setPullToRefreshFillColor(_ color: UIColor)
 ## Contribution
 
 Please feel free to submit pull requests. Cannot wait to see your custom loading views for this pull to refresh.
+
+## Contact
+
+Danil Gontovnik
+
+- https://github.com/gontovnik
+- https://twitter.com/gontovnik
+- http://gontovnik.com/
+- danil@gontovnik.com
 
 ## License
 
