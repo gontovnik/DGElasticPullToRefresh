@@ -4,14 +4,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "DGElasticPullToRefresh",
+    name: "PSElasticPullToRefresh",
     products: [
         .library(
-            name: "DGElasticPullToRefresh",
-            targets: ["DGElasticPullToRefresh"]),
+            name: "PSElasticPullToRefresh",
+            targets: ["PSElasticPullToRefresh"]),
     ],
     targets: [
         .target(
-            name: "DGElasticPullToRefresh"),
+            name: "PSElasticPullToRefresh"),
     ]
 )
